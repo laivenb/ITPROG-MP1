@@ -1,0 +1,16 @@
+/*-- Font Defining Start --*/
+@font-face {
+    font-family: IntroRust-Base;
+    src: url('assets/fonts/IntroRust/IntroRust-Base.otf');
+}
+/*-- Font Defining End --*/
+
+/*-- Body Style Start --*/
+body {
+    font-family: IntroRust-Base;
+}
+/*-- Body Style End --*/
+
+h1 {
+    font-family: IntroRust-Base;
+}
