@@ -1,0 +1,28 @@
+/*-- Font Defining Start --*/
+
+@font-face {    /* Define IntroRust-Base */
+    font-family: 'IntroRust-Base';
+    src: url("/ITPROG-MP1/assets/fonts/IntroRust/IntroRust-Base.ttf") format("truetype");
+}
+
+@font-face {    /* Define Mistrully */
+    font-family: 'Mistrully';
+    src: url("/ITPROG-MP1/assets/fonts/Mistrully/mistrully.ttf") format("truetype");
+}
+
+@font-face {    /* Define Glacial Indifference */
+    font-family: 'GlacialIndi';
+    src: url("/ITPROG-MP1/assets/fonts/GlacialIndifference/GlacialIndifference-Bold.otf") format("opentype");
+}
+
+@font-face {    /* Define BayerTypeArchiType */
+    font-family: 'ArchiType';
+    src: url("/ITPROG-MP1/assets/fonts/Bayer/BayerTypeArchiTypeRegular.otf") format("opentype");
+}
+
+@font-face {    /* Define BebasNeue */
+    font-family: 'BebasNeue';
+    src: url("/ITPROG-MP1/assets/fonts/BebasNeue/BebasNeue-Regular.otf") format("opentype");
+}
+
+/*-- Font Defining End --*/
