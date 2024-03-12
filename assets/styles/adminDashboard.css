@@ -1,0 +1,13 @@
+/* Import Fonts */
+@import url('fontDefining.css');
+
+/*-- Background Start --*/
+body {
+    background-color: #ddcdc0;
+    background-image: url('/ITPROG-MP1/assets/images/SkyBG50.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+    font-family: 'IntroRust-Base', sans-serif;
+}
+/*-- Background End --*/
