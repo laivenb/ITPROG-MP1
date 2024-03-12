@@ -4,13 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Main</title>
-  <link rel="stylesheet" href="assets/styles/main.css">
   <!-- Import Header Stylesheet -->
   <link rel="stylesheet" href="assets/styles/header.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
-      background-color: #ddcdc0; /* Set your desired background color */
+      background-color: #ddcdc0; 
     }
 
     .menu-items {
@@ -19,30 +18,30 @@
 
     .menu-item {
       display: inline-block;
-      margin: 0 20px; /* Adjust the spacing between menu items */
-      vertical-align: top; /* Align items at the top */
-      border: 2px solid #5c5c5c; /* Add border */
-      padding: 10px; /* Add padding */
+      margin: 0 20px; 
+      vertical-align: top; 
+      border: 2px solid #5c5c5c; 
+      padding: 10px; 
       background-color: #d39d56;
-      width: 300px; /* Set a fixed width for menu items */
+      width: 300px; 
     }
 
     .menu-item img {
-      max-width: 100%; /* Ensure images are not wider than their container */
-      max-height: 200px; /* Set a maximum height for consistency */
+      max-width: 100%; 
+      max-height: 200px; 
       display: block;
-      margin: 0 auto; /* Centers the images horizontally */
+      margin: 0 auto; 
     }
 
     h2 {
-      text-align: center; /* Center the "MAIN DISHES" heading */
+      text-align: center; 
     }
 
     .navigation {
-      display: flex; /* Use flexbox layout */
+      display: flex; 
       margin-top: 100px;
-      justify-content: flex-end; /* Align items to the right */
-      padding-right: 20px; /* Add some padding to the right */
+      justify-content: flex-end; 
+      padding-right: 20px; 
     }
 
     .navigation a {
@@ -62,28 +61,42 @@
   </style>
 </head>
 <body>
-  <!-- Required Elements per Page Start -->
-      <?php include 'header.php'; ?>                               <!-- Header .php -->
-      <?php include './assets/scripts/frameworkLib.php'; ?>        <!-- Framework PHP Script Reference-->
-  <!-- Required Elements per Page End -->
+  <!-- Navigation Bar Start-->
+  <div class="navBar">
+    <img class="logo" id="logo" src="./assets/images/SkyCuisineLogo.png"/>
+    <ul>
+      <li><a href="#">HOME</a></li>
+      <li><a href="#">MENU</a>
+        <div class="navDropdown">
+          <ul class="navBarDrop">
+            <li><a href="#">MAIN</a></li>
+            <li><a href="#">SIDES</a></li>
+            <li><a href="#">DRINKS</a></li>
+            <li><a href="#">COMBO</a></li>
+          </ul>
+        </div>
+      </li>
+      <li><a href="#">CART</a></li>
+      <li><a href="login.php">LOGIN</a></li>
+    </ul>
+  </div>
+  <!-- Navigation Bar End-->
 
   <main>
-  <br><br>
     <h2>MAIN DISHES</h2>
-    <br>
     <section class="menu-items">
       <article class="menu-item">
-        <img src="assets/images/carbonara.jpg" alt="Carbonara"> <br>
+        <img src="assets/images/carbonara.jpg" alt="Carbonara"> 
         <p>Carbonara</p>
         <p>&#8369;350</p>
       </article>
       <article class="menu-item">
-        <img src="assets/images/chicken_adobo.jpg" alt="Chicken Adobo"><br>
+        <img src="assets/images/chicken_adobo.jpg" alt="Chicken Adobo">
         <p>Chicken Adobo</p>
         <p>&#8369;350</p>
       </article>
       <article class="menu-item">
-        <img src="assets/images/salmon_steak.jpg" alt="Salmon Steak"><br>
+        <img src="assets/images/salmon_steak.jpg" alt="Salmon Steak">
         <p>Salmon Steak</p>
         <p>&#8369;400</p>
       </article>
