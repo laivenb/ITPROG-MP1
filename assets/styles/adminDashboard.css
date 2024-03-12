@@ -8,6 +8,77 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100%;
-    font-family: 'IntroRust-Base', sans-serif;
 }
 /*-- Background End --*/
+
+/*-- Flight Display Start--*/
+.headerFlight {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.airportName {
+    flex: 1; /* Grow to fill available space */
+    font-family: 'IntroRust-Base', sans-serif;
+}
+
+.HNAIA {
+    font-size: 30px;
+}
+
+.headerDate {
+    margin-left: 10px; /* Adjust as needed */
+    font-family: 'IntroRust-Base', sans-serif;
+    font-size: 30px;
+}
+
+.boxContainers {
+    width: 75vw;
+    height: 100vh;
+    margin-left: 250px;
+}
+.flightContainers {
+    width: 100%;
+    height: 50px;
+    background: rgba(255,255,255, 0.5);
+    backdrop-filter: blur(5px);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+.flightContainers > div {
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-radius: 30px;
+}
+
+.flightContainers > div span {
+    margin-left: 30px;
+}
+
+.flightInfo {
+    width: 100%;
+    height: 50px;
+    background: rgba(255,255,255, 0.5);
+    backdrop-filter: blur(5px);
+    border-radius: 30px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.flightInfo > div {
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-radius: 30px;
+}
+.flightInfo > div > span:not([class]) {
+    line-height: 1;
+}
+
+.addInfo {
+    opacity: .5;
+}
+/*-- Flight Display End--*/
