@@ -1,0 +1,74 @@
+@import url('fontDefining.css');
+
+body {
+    font-family: 'IntroRust', sans-serif;
+    background-color: #ddcdc0;
+    background-image: url('/ITPROG-MP1/assets/images/SkyBG50.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    background: rgba(231, 231, 231, 0.5);
+    padding: 20px;
+    border-radius: 20px;
+    width: 550px; 
+    height: 510px;
+    max-width: 90%; 
+}
+
+.form-control {
+    width: 100%;
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
+    margin-bottom: 20px;
+}
+
+.form-control::placeholder {
+    color: #b9b9b9; 
+}
+
+h1{
+    font-family: 'IntroRust-Base', sans-serif;
+    margin-top: 1px;
+    font-size: 30px;
+    color: #944e30;
+}
+
+.btn-primary {
+    width: 50%;
+    padding: 10px;
+    border: none;
+    border-radius: 28px; 
+    background-color: #944e30;
+    color: #fff;
+    cursor: pointer;
+    font-family: 'IntroRust-Base', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 10px;
+}
+
+.btn-primary:hover {
+    background-color: #ddcdc0;
+}
+
+.logo {
+    width: 450px; 
+    height: auto; 
+    margin-bottom: 1px;
+}
+
+form {
+    text-align: center;
+}

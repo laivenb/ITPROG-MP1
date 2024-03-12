@@ -19,7 +19,7 @@
                 </div>
             </li>
             <li><a href="#">CART</a></li>
-            <li><a href="#">LOGIN</a></li>
+            <li><a href="login.php">LOGIN</a></li>
         </ul>
     </div>
 <!-- Navigation Bar End-->
