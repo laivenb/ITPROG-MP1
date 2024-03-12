@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sky Cuisine Menu</title>
+    <link rel="stylesheet" href="assets/styles/header.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #ddcdc0;
+        }
+
+        header {
+            background-color: #944e30;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header img {
+            width: 150px;
+            height: auto;
+        }
+
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #d39d56;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover{
+            color: white;
+        }
+
+        .dropdown-menu {
+            display: none; 
+            position: absolute;
+            background-color: #944e30;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-menu a {
+            color: #d39d56;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .dropdown-menu a:hover {
+            color: white;
+        }
+
+        .type {
+            margin-top: 10px;
+            margin-bottom: 0px;
+            text-align: center;
+        }
+
+        main {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: 20px; 
+        }
+
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            border: 2px solid #ccc; 
+            padding: 10px; 
+            background-color: #e88f1e;
+        }
+
+        .menu-item img {
+            width: 200px; 
+            height: 200px; 
+            object-fit: cover; 
+            margin-bottom: 10px; 
+        }
+
+        .menu-item-details {
+            text-align: center;
+        }
+
+        .menu-item-name {
+            font-weight: bold;
+        }
+
+        .menu-item-price {
+            color: black;
+        }
+
+        .buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .buttons button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+
+        .buttons button.cancel {
+            background-color: #f44336;
+        }
+
+        footer {
+            background-color: #ddcdc0;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .cart-button,
+        .buttons button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease; 
+        }
+
+        .cart-button:hover,
+        .buttons button:hover,
+        .buttons button.cancel:hover {
+            background-color: #000000; 
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <header style="display: flex; justify-content: space-between; align-items: center;">
+        <img src="images/logo.png" alt="Logo" style="margin-left: 20px;">
+        <nav style="margin-right: 20px;">
+            <a href="#">HOME</a>
+            <a href="#" id="menuBtn">MENU</a>
+            <div class="dropdown-menu" id="menuDropdown">
+                <a href="#">MAIN</a>
+                <a href="#">SIDES</a>
+                <a href="#">DRINKS</a>
+                <a href="#">COMBO</a>
+            </div>
+            <a href="#">CART</a>
+        </nav>
+    </header>
+    <div class="type">
+        <strong style="font-size: 24px;">Choose a Main Dish</strong> 
+    </div>
+    <main>
+        <div class="menu">
+            <div class="menu-item">
+                <img src="images/carbonara.jpg" alt="Carbonara Dish">
+                <div class="menu-item-details">
+                    <span class="menu-item-name">Carbonara</span><br>
+                    <span class="menu-item-price">P550</span>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="images/chicken_adobo.jpg" alt="Chicken Adobo Dish">
+                <div class="menu-item-details">
+                    <span class="menu-item-name">Chicken Adobo</span><br>
+                    <span class="menu-item-price">P350</span>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="images/salmon_steak.jpg" alt="Salmon Steak Dish">
+                <div class="menu-item-details">
+                    <span class="menu-item-name">Salmon Steak</span><br>
+                    <span class="menu-item-price">P400</span>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <button class="cart-button">Add to Cart</button>
+        <div class="buttons">
+            <button class="next">Next</button>
+            <button class="cancel">Cancel</button>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById("menuBtn").addEventListener("click", function() {
+            var menuDropdown = document.getElementById("menuDropdown");
+            if (menuDropdown.style.display === "block") {
+                menuDropdown.style.display = "none";
+            } else {
+                menuDropdown.style.display = "block";
+            }
+        });
+    </script>
+</body>
+</html>
