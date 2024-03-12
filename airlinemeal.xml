@@ -1,0 +1,197 @@
+<airline_meal xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <accounts>
+        <account>
+            <account_ID>1001</account_ID>
+            <customer_ID>101</customer_ID>
+            <isAdmin>1</isAdmin>
+        </account>
+        <account>
+            <account_ID>1002</account_ID>
+            <customer_ID>102</customer_ID>
+            <isAdmin>0</isAdmin>
+        </account>
+        <account>
+            <account_ID>1003</account_ID>
+            <customer_ID>103</customer_ID>
+            <isAdmin>0</isAdmin>
+        </account>
+        <account>
+            <account_ID>1004</account_ID>
+            <customer_ID>104</customer_ID>
+            <isAdmin>0</isAdmin>
+        </account>
+        <account>
+            <account_ID>1005</account_ID>
+            <customer_ID>105</customer_ID>
+            <isAdmin>0</isAdmin>
+        </account>
+        <account>
+            <account_ID>1006</account_ID>
+            <customer_ID>106</customer_ID>
+            <isAdmin>0</isAdmin>
+        </account>
+        <account>
+            <account_ID>1007</account_ID>
+            <customer_ID>107</customer_ID>
+            <isAdmin>0</isAdmin>
+        </account>
+    </accounts>
+
+    <customers>
+        <customer>
+            <customer_ID>101</customer_ID>
+            <customer_Name>Cayra Maxine Lee</customer_Name>
+            <contact_Number>9124351248</contact_Number>
+        </customer>
+        <customer>
+            <customer_ID>102</customer_ID>
+            <customer_Name>Cymbeline Anne Lignes</customer_Name>
+            <contact_Number>9126134760</contact_Number>
+        </customer>
+        <customer>
+            <customer_ID>103</customer_ID>
+            <customer_Name>Marc Jethro Baroja</customer_Name>
+            <contact_Number>9514829529</contact_Number>
+        </customer>
+        <customer>
+            <customer_ID>104</customer_ID>
+            <customer_Name>Marius Enrico Manaloto</customer_Name>
+            <contact_Number>9482756274</contact_Number>
+        </customer>
+        <customer>
+            <customer_ID>105</customer_ID>
+            <customer_Name>Laiven Banez</customer_Name>
+            <contact_Number>9574829057</contact_Number>
+        </customer>
+        <customer>
+            <customer_ID>106</customer_ID>
+            <customer_Name>Jean Mikael Mariano</customer_Name>
+            <contact_Number>9572850382</contact_Number>
+        </customer>
+        <customer>
+            <customer_ID>107</customer_ID>
+            <customer_Name>Josheart Adrienne</customer_Name>
+            <contact_Number>9582017582</contact_Number>
+        </customer>
+    </customers>
+
+    <maindishes>
+        <maindish>
+            <dish_ID>1</dish_ID>
+            <dish_name>Carbonara</dish_name>
+            <price>350</price>
+        </maindish>
+        <maindish>
+            <dish_ID>2</dish_ID>
+            <dish_name>Chicken Adobo</dish_name>
+            <price>350</price>
+        </maindish>
+        <maindish>
+            <dish_ID>3</dish_ID>
+            <dish_name>Salmon Steak</dish_name>
+            <price>400</price>
+        </maindish>
+    </maindishes>
+
+    <sidedishes>
+        <sidedish>
+            <side_ID>1</side_ID>
+            <side_name>Fruit Cocktail</side_name>
+            <price>350</price>
+        </sidedish>
+        <sidedish>
+            <side_ID>2</side_ID>
+            <side_name>Mashed Potato</side_name>
+            <price>350</price>
+        </sidedish>
+        <sidedish>
+            <side_ID>3</side_ID>
+            <side_name>Mac N' Cheese</side_name>
+            <price>400</price>
+        </sidedish>
+    </sidedishes>
+
+    <drinks>
+        <drink>
+            <drink_ID>1</drink_ID>
+            <drink_name>Orange Juice</drink_name>
+            <price>100</price>
+        </drink>
+        <drink>
+            <drink_ID>2</drink_ID>
+            <drink_name>Coca-Cola Can</drink_name>
+            <price>100</price>
+        </drink>
+        <drink>
+            <drink_ID>3</drink_ID>
+            <drink_name>Coffee</drink_name>
+            <price>200</price>
+        </drink>
+    </drinks>
+
+    <orders>
+        <order>
+            <order_ID>11001</order_ID>
+            <customer_ID>106</customer_ID>
+            <main_ID>1</main_ID>
+            <side_ID>3</side_ID>
+            <drink_ID>3</drink_ID>
+            <combo_ID xsi:nil="true"/>
+            <flight_no>217</flight_no>
+            <orderDate>2024-03-10</orderDate>
+        </order>
+        <order>
+            <order_ID>11002</order_ID>
+            <customer_ID>103</customer_ID>
+            <main_ID xsi:nil="true"/>
+            <side_ID xsi:nil="true"/>
+            <drink_ID xsi:nil="true"/>
+            <combo_ID>15</combo_ID>
+            <flight_no>220</flight_no>
+            <orderDate>2024-03-11</orderDate>
+        </order>
+        <!-- Add more order entries as needed -->
+    </orders>
+
+    <combos>
+        <combo>
+            <combo_ID>10</combo_ID>
+            <combo_Name>Combo 10</combo_Name>
+            <price>652.50</price>
+        </combo>
+        <combo>
+            <combo_ID>15</combo_ID>
+            <combo_Name>Combo 15</combo_Name>
+            <price>578.00</price>
+        </combo>
+        <!-- Add more combo entries as needed -->
+    </combos>
+
+    <transactions>
+        <transaction>
+            <transaction_ID>10001</transaction_ID>
+            <order_ID>11001</order_ID>
+            <total_price>600</total_price>
+            <transaction_date xsi:nil="true"/>
+            <isPaid>0</isPaid>
+        </transaction>
+        <transaction>
+            <transaction_ID>10002</transaction_ID>
+            <order_ID>11002</order_ID>
+            <total_price>578</total_price>
+            <transaction_date>2024-03-11</transaction_date>
+            <isPaid>1</isPaid>
+        </transaction>
+        <!-- Add more transaction entries as needed -->
+    </transactions>
+
+    <discountedorderitems>
+        <discountedorderitem>
+            <discounted_ID>10001</discounted_ID>
+            <order_ID>11002</order_ID>
+            <discount_amount>86.70</discount_amount>
+            <isPWD>0</isPWD>
+        </discountedorderitem>
+        <!-- Add more discountedorderitem entries as needed -->
+    </discountedorderitems>
+</airline_meal>
