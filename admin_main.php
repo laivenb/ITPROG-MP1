@@ -140,6 +140,7 @@
   <input type="number" id="dish-price" name="dish-price" required><br><br>
 
   <button type="submit">Add</button>
+  <button type="button" id="add-cancel-btn">Cancel</button>
 </form>
       </div>
     </div>
@@ -147,61 +148,68 @@
 
     <div class="navigation">
     <a href="#" class="add-menu-btn">Add Menu Item</button>
-      <a href="#" class="next-btn">NEXT</a>
+      <a href="#" class="add-next-btn">NEXT</a>
       <a href="#" class="cancel-btn">CANCEL</a>
     </div>
 
  
   </main>
   <script>
-  // Get the modal
-  const modal = document.querySelector('.modal');
-  // Get the button that opens the modal
-  const addMenuBtn = document.querySelector('.add-menu-btn');
-  // Get the <span> element that closes the modal
-  const closeModalBtn = document.querySelector('.cancel-btn');
+    // Get the modal
+    const modal = document.querySelector('.modal');
+    // Get the button that opens the modal
+    const addMenuBtn = document.querySelector('.add-menu-btn');
+    // Get the cancel button inside the modal
+    const cancelBtn = document.getElementById('add-cancel-btn');
+    // Get the cancel button outside the modal
+    const closeModalBtn = document.querySelector('.cancel-btn');
 
-  // When the user clicks the button, open the modal
-  addMenuBtn.addEventListener('click', function() {
-    modal.style.display = 'block';
-  });
+    // When the user clicks the button, open the modal
+    addMenuBtn.addEventListener('click', function() {
+      modal.style.display = 'block';
+    });
 
-  // When the user clicks on <span> (x), close the modal
-  closeModalBtn.addEventListener('click', function() {
-    modal.style.display = 'none';
-  });
-
-  // When the user clicks anywhere outside of the modal, close it
-  window.addEventListener('click', function(event) {
-    if (event.target == modal) {
+    // When the user clicks on cancel button inside the modal, close the modal
+    cancelBtn.addEventListener('click', function() {
       modal.style.display = 'none';
-    }
-  });
+    });
 
-  // Handle form submission
-const addMenuForm = document.getElementById('add-menu-form');
-addMenuForm.addEventListener('submit', function(event) {
-  event.preventDefault(); // Prevent form submission
-  // Get form data
-  const dishImageFile = document.getElementById('dish-image').files[0]; // Get the selected file
-  const dishName = document.getElementById('dish-name').value;
-  const dishPrice = document.getElementById('dish-price').value;
+    // When the user clicks on cancel button outside the modal, close the modal
+    closeModalBtn.addEventListener('click', function() {
+      modal.style.display = 'none';
+    });
 
-  // Create FormData object to send file data
-  const formData = new FormData();
-  formData.append('dish-image', dishImageFile);
-  formData.append('dish-name', dishName);
-  formData.append('dish-price', dishPrice);
+    // When the user clicks anywhere outside of the modal, close it
+    window.addEventListener('click', function(event) {
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    });
 
-  // Do something with the form data (e.g., send to server using AJAX)
-  console.log('Dish Image File:', dishImageFile);
-  console.log('Dish Name:', dishName);
-  console.log('Dish Price:', dishPrice);
+    // Handle form submission
+    const addMenuForm = document.getElementById('add-menu-form');
+    addMenuForm.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form submission
+      // Get form data
+      const dishImageFile = document.getElementById('dish-image').files[0]; // Get the selected file
+      const dishName = document.getElementById('dish-name').value;
+      const dishPrice = document.getElementById('dish-price').value;
 
-  // Close the modal after form submission
-  modal.style.display = 'none';
-  // You can perform further actions (e.g., AJAX request to add the item)
-});
-</script>
+      // Create FormData object to send file data
+      const formData = new FormData();
+      formData.append('dish-image', dishImageFile);
+      formData.append('dish-name', dishName);
+      formData.append('dish-price', dishPrice);
+
+      // Do something with the form data (e.g., send to server using AJAX)
+      console.log('Dish Image File:', dishImageFile);
+      console.log('Dish Name:', dishName);
+      console.log('Dish Price:', dishPrice);
+
+      // Close the modal after form submission
+      modal.style.display = 'none';
+      // You can perform further actions (e.g., AJAX request to add the item)
+    });
+  </script>
 </body>
 </html>
