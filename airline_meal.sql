@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2024 at 11:59 AM
+-- Generation Time: Mar 14, 2024 at 12:45 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -11,24 +11,15 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
--- Check if the database exists, create it if it doesn't
-CREATE DATABASE IF NOT EXISTS `airline_meal`;
-USE `airline_meal`;
-
--- Rest of the SQL dump remains the same
--- Table structures, data, and constraints
-
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
+--
+-- Database: `airline_meal`
+--
 
 -- --------------------------------------------------------
 
@@ -39,21 +30,23 @@ COMMIT;
 CREATE TABLE `accounts` (
   `account_ID` int(11) NOT NULL,
   `customer_ID` int(11) DEFAULT NULL,
-  `isAdmin` bit(1) DEFAULT NULL
+  `isAdmin` bit(1) DEFAULT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `accounts`
 --
 
-INSERT INTO `accounts` (`account_ID`, `customer_ID`, `isAdmin`) VALUES
-(1001, 101, b'1'),
-(1002, 102, b'0'),
-(1003, 103, b'0'),
-(1004, 104, b'0'),
-(1005, 105, b'0'),
-(1006, 106, b'0'),
-(1007, 107, b'0');
+INSERT INTO `accounts` (`account_ID`, `customer_ID`, `isAdmin`, `email`, `password`) VALUES
+(1001, 101, b'1', 'caira_lee@gmail.com', 'cmleeDLSU1001'),
+(1002, 102, b'0', 'cymbeline_lignes@gmail.com', 'calignesDLSU1002'),
+(1003, 103, b'0', 'marc_Baroja@gmail.com', 'mjbarojaDLSU1003'),
+(1004, 104, b'0', 'marius_manoloto@gmail.com', 'memanolotoDLSU1004'),
+(1005, 105, b'0', 'laiven_banez@gmail.com', 'lbanezDLSU1005'),
+(1006, 106, b'0', 'jean_mariano@gmail.com', 'jmmarianoDLSU1006'),
+(1007, 107, b'0', 'josheart_adrienne@gmail.com', 'jadreinneDLSU1007');
 
 -- --------------------------------------------------------
 

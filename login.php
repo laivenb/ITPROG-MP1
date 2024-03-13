@@ -1,3 +1,36 @@
+<?php
+session_start();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    if (!empty($email) && !empty($password)) {
+        $xml = simplexml_load_file("data.xml");
+        $account = $xml->xpath("//account[email='{$email}' and password='{$password}']");
+        
+        if (!empty($account)) {
+            $isAdmin = (int)$account[0]->isAdmin;
+            $customer_ID = (int)$account[0]->customer_ID;
+            $_SESSION['email'] = $email;
+            $_SESSION['customer_ID'] = $customer_ID;
+            
+            if ($isAdmin == 1) {
+                header("Location: admindashboard.php"); //Change this into admindashboard
+                exit();
+            } else {
+                header("Location: userdashboard.php"); //changethisinto userdashboard
+                exit();
+            }
+        } else {
+            // If credentials are incorrect, display an error message
+            $error = "Invalid email or password";
+        }
+    } else {
+        // If email or password is empty, display an error message
+        $error = "Please provide both email and password";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
