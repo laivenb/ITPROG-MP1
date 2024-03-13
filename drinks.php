@@ -58,6 +58,7 @@
     .navigation a:hover {
         color: #ffffff;
     }
+    </style>
 </head>
 <body>
   <!-- Navigation Bar Start-->
