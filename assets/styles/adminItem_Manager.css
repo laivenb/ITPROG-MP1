@@ -1,0 +1,100 @@
+/* Import Fonts */
+@import url('fontDefining.css');
+
+/*-- Background Start --*/
+body {
+    background-color: #ddcdc0;
+    background-image: url('/ITPROG-MP1/assets/images/SkyBG50.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+}
+/*-- Background End --*/
+
+/*-- Container Display Start --*/
+.boxContainers {
+    width: 75vw;
+    height: 100vh;
+    margin-left: 250px;
+}
+
+.headerMainDish {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.categoryName {
+    flex: 1;
+    font-family: 'IntroRust-Base', sans-serif;
+}
+
+.Hmain {
+    font-size: 30px;
+}
+
+.addBtn {
+    border: none;
+    background-color: transparent;
+}
+
+.headerAdd {
+    margin-left: 10px;
+    font-family: 'IntroRust-Base', sans-serif;
+    font-size: 30px;
+}
+.mainHeaderContainers, .mainInfoContainers{
+    width: 100%;
+    background: rgba(255,255,255, 0.5);
+    backdrop-filter: blur(5px);
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr 80px 80px;
+}
+
+.mainHeaderContainers > div{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    border-radius: 30px;
+    font-family: 'GlacialIndi', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.mainInfoContainers > div{
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      position: relative;
+      border-radius: 30px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+  }
+
+.mainHeaderContainers > div:nth-child(3),
+.mainHeaderContainers > div:nth-child(4),
+.mainHeaderContainers > div:nth-child(5) {
+    width: 80px;
+    text-align: center;
+}
+
+.mainInfoContainers > div:nth-child(3),
+.mainInfoContainers > div:nth-child(4),
+.mainInfoContainers > div:nth-child(5) {
+    width: 80px;
+    text-align: center;
+}
+
+.mainHeaderContainers > div span , .mainInfoContainers > div span{
+    margin-left: 5px;
+}
+/*-- Container Display End --*/
+/*-- Spacer Start --*/
+.spacer {
+    width: 75vw;
+    height: 70px;
+}
+/*-- Spacer End --*/

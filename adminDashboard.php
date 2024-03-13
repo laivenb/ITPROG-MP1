@@ -23,7 +23,7 @@
                     <span class="rightDate">17-Mar-2024</span>
                 </div>
             </div>
-            <div class="flightContainers">
+            <div class="flightHeaderContainers">
                 <div><span>Flight</span></div>
                 <div><span>Departure Time</span></div>
                 <div><span>Arrival Time</span></div>
