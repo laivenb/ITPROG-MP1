@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
     if (!empty($email) && !empty($password)) {
-        $xml = simplexml_load_file("data.xml");
+        $xml = simplexml_load_file("airlinemeal.xml");
         $account = $xml->xpath("//account[email='{$email}' and password='{$password}']");
         
         if (!empty($account)) {
