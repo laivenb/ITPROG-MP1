@@ -7,27 +7,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $stmt = $pdo->prepare("SELECT * FROM accounts WHERE email = :email");
+    // Prepare SQL statement to select the user based on email and plaintext password
+    $stmt = $pdo->prepare("SELECT * FROM accounts WHERE email = :email AND password = :password");
 
+    // Bind the parameters
     $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':password', $password);
 
+    // Execute the query
     $stmt->execute();
 
+    // Fetch the user record
     $account = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($account && password_verify($password, $account['password'])) {
-        // Password is correct
-        $_SESSION['account_id'] = $account['account_id'];
+    // Check if account exists
+    if ($account) {
+        // Account exists, set session variable and redirect
+        $_SESSION['account_id'] = $account['account_ID']; // Make sure to use the correct column name
         if ($account['isAdmin'] == 1) {
             // Redirect to admin dashboard
             header("Location: admindashboard.php");
+            exit();
         } else {
             // Redirect to user dashboard
             header("Location: userdashboard.php");
+            exit();
         }
-        exit();
     } else {
-        // Password is incorrect or account does not exist
+        // Account does not exist or password is incorrect
         $_SESSION['login_error'] = "Invalid email or password";
         header("Location: login.php");
         exit();
