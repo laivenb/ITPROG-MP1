@@ -66,13 +66,14 @@
 
                 echo "<div class='mainInfoContainers'>";
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $imageSrc = "./assets/images/admin/".$row['dish_ID'].".jpg";
-                    echo "<div><img src='".$imageSrc."' alt='Image' width='50' height='50'></div>";
-                    echo "<div><span>".$row['dish_name']."</span></div>";
-                    echo "<div><span>".$row['price']."</span></div>";
-                    echo "<div><span><button type='button' class='btn btn-secondary'>Edit</button></span></div>";
-                    echo "<div><span><button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#deleteModal' data-dishname='".$row['dish_name']."' data-dishprice='".$row['price']."' onclick='logDishInfo(this)'>Delete</button></span></div>";
-
+                    if ($row['price'] != 9999) {
+                        $imageSrc = "./assets/images/admin/".$row['dish_ID'].".jpg";
+                        echo "<div><img src='".$imageSrc."' alt='Image' width='50' height='50'></div>";
+                        echo "<div><span>".$row['dish_name']."</span></div>";
+                        echo "<div><span>".$row['price']."</span></div>";
+                        echo "<div><span><button type='button' class='btn btn-secondary' data-bs-toggle='modal' data-bs-target='#editModal' data-dishname='".$row['dish_name']."' data-dishprice='".$row['price']."' onclick='logDishInfo(this)'>Edit</button></span></div>";
+                        echo "<div><span><button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#deleteModal' data-dishname='".$row['dish_name']."' data-dishprice='".$row['price']."' onclick='logDishInfo(this)'>Delete</button></span></div>";
+                    }
                 }
                 echo "</div>";
 
@@ -100,7 +101,29 @@
                 </div>
             </div>
             <!-- Modal Delete End -->
+            <!-- Modal Edit Start -->
+            <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content modalContentMain">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit Dish</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="mainDishPriceForm">
+                                <label for="inputMprice">Price:</label><br>
+                                <input type="text" id="inputMprice" name="inputMprice"><br>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                            <button type="button" onclick="editDish()" class="btn btn-primary">Yes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Modal Edit End -->
             <!-- Side Dish Display Start -->
             <div class="headerMainDish">
                 <div class="categoryName">
@@ -247,22 +270,65 @@
                 console.log('Dish Price:', dishPrice);
             }
 
-            function deleteDish() {
+            async function deleteDish() {
                 if (!currentdishName) {
                     console.error('No dish selected.');
                     return;
                 }
-                // Send a POST request to editPrice.php
-                fetch('./assets/scripts/editPrice.php', {
-                    method: 'POST',
-                    body: 'dishName=' + encodeURIComponent(currentdishName),
-                })
-                    .then(response => response.text())
-                    .then(data => console.log('Response from editPrice.php:', data))
-                    .catch(error => console.error('Error:', error));
 
-                currentdishName = null; // Reset the currentDishName after deletion
+                const formData = new FormData();
+                formData.append('dishName', currentdishName);
+
+                try {
+                    const response = await fetch('./assets/scripts/editPrice.php', {
+                        method: 'POST',
+                        body: formData,
+                    });
+                    const data = await response.text();
+                    console.log('Response from editPrice.php:', data);
+                    window.location.href = 'http://localhost/ITPROG-MP1/adminItem_Manager.php';
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+
+                currentdishName = null;
             }
+
+            async function editDish() {
+                const newPrice = document.getElementById('inputMprice').value;
+                console.log(newPrice);
+                if (!currentdishName || !newPrice) {
+                    console.error('No dish or price selected.');
+                    return;
+                }
+
+                const form = document.createElement('form');
+                form.setAttribute('method', 'POST');
+                form.setAttribute('action', './assets/scripts/editMdish.php');
+
+                const dishNameInput = document.createElement('input');
+                dishNameInput.setAttribute('type', 'hidden');
+                dishNameInput.setAttribute('name', 'dishName');
+                dishNameInput.setAttribute('value', currentdishName);
+
+                const newPriceInput = document.createElement('input');
+                newPriceInput.setAttribute('type', 'hidden');
+                newPriceInput.setAttribute('name', 'newPrice');
+                newPriceInput.setAttribute('value', newPrice);
+
+                form.appendChild(dishNameInput);
+                form.appendChild(newPriceInput);
+
+                document.body.appendChild(form);
+
+                form.submit();
+
+            }
+
+
+
+
+
 
 
     </script>
