@@ -4,6 +4,7 @@
             <account_ID>1001</account_ID>
             <customer_ID>101</customer_ID>
             <isAdmin>1</isAdmin>
+            <username>cairalee</username>
             <email>caira_lee@gmail.com</email>
             <password>cmleeDLSU1001</password>
         </account>
@@ -11,6 +12,7 @@
             <account_ID>1002</account_ID>
             <customer_ID>102</customer_ID>
             <isAdmin>0</isAdmin>
+            <username>cymlignes</username>
             <email>cymbeline_lignes@gmail.com</email>
             <password>calignesDLSU1002</password>
         </account>
@@ -18,6 +20,7 @@
             <account_ID>1003</account_ID>
             <customer_ID>103</customer_ID>
             <isAdmin>0</isAdmin>
+            <username>marcbaroja</username>
             <email>marc_Baroja@gmail.com</email>
             <password>mjbarojaDLSU1003</password>
         </account>
@@ -25,6 +28,7 @@
             <account_ID>1004</account_ID>
             <customer_ID>104</customer_ID>
             <isAdmin>0</isAdmin>
+            <username>mariusm</username>
             <email>marius_manoloto@gmail.com</email>
             <password>memanolotoDLSU1004</password>
         </account>
@@ -32,6 +36,7 @@
             <account_ID>1005</account_ID>
             <customer_ID>105</customer_ID>
             <isAdmin>0</isAdmin>
+            <username>laivenb</username>
             <email>laiven_banez@gmail.com</email>
             <password>lbanezDLSU1005</password>
         </account>
@@ -39,6 +44,7 @@
             <account_ID>1006</account_ID>
             <customer_ID>106</customer_ID>
             <isAdmin>0</isAdmin>
+            <username>jeanm</username>
             <email>jean_mariano@gmail.com</email>
             <password>jmmarianoDLSU1006</password>
         </account>
@@ -46,6 +52,7 @@
             <account_ID>1007</account_ID>
             <customer_ID>107</customer_ID>
             <isAdmin>0</isAdmin>
+            <username>joshearta</username>
             <email>josheart_adrienne@gmail.com</email>
             <password>jadreinneDLSU1007</password>
         </account>
