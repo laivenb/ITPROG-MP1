@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2024 at 12:45 AM
+-- Generation Time: Mar 14, 2024 at 10:15 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -32,21 +32,22 @@ CREATE TABLE `accounts` (
   `customer_ID` int(11) DEFAULT NULL,
   `isAdmin` bit(1) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL
+  `password` varchar(100) NOT NULL,
+  `username` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `accounts`
 --
 
-INSERT INTO `accounts` (`account_ID`, `customer_ID`, `isAdmin`, `email`, `password`) VALUES
-(1001, 101, b'1', 'caira_lee@gmail.com', 'cmleeDLSU1001'),
-(1002, 102, b'0', 'cymbeline_lignes@gmail.com', 'calignesDLSU1002'),
-(1003, 103, b'0', 'marc_Baroja@gmail.com', 'mjbarojaDLSU1003'),
-(1004, 104, b'0', 'marius_manoloto@gmail.com', 'memanolotoDLSU1004'),
-(1005, 105, b'0', 'laiven_banez@gmail.com', 'lbanezDLSU1005'),
-(1006, 106, b'0', 'jean_mariano@gmail.com', 'jmmarianoDLSU1006'),
-(1007, 107, b'0', 'josheart_adrienne@gmail.com', 'jadreinneDLSU1007');
+INSERT INTO `accounts` (`account_ID`, `customer_ID`, `isAdmin`, `email`, `password`, `username`) VALUES
+(1001, 101, b'1', 'caira_lee@gmail.com', 'cmleeDLSU1001', 'cairalee'),
+(1002, 102, b'0', 'cymbeline_lignes@gmail.com', 'calignesDLSU1002', 'cymlignes'),
+(1003, 103, b'0', 'marc_Baroja@gmail.com', 'mjbarojaDLSU1003', 'marcbaroja'),
+(1004, 104, b'0', 'marius_manoloto@gmail.com', 'memanolotoDLSU1004', 'mariusm'),
+(1005, 105, b'0', 'laiven_banez@gmail.com', 'lbanezDLSU1005', 'laivenb'),
+(1006, 106, b'0', 'jean_mariano@gmail.com', 'jmmarianoDLSU1006', 'jeanm'),
+(1007, 107, b'0', 'josheart_adrienne@gmail.com', 'jadreinneDLSU1007', 'joshearta');
 
 -- --------------------------------------------------------
 
