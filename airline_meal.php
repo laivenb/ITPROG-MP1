@@ -30,12 +30,14 @@ if ($xml) {
     // Display Accounts Table
     echo "<h2>Accounts</h2>";
     echo "<table>";
-    echo "<tr><th>Account ID</th><th>Customer ID</th><th>isAdmin</th></tr>";
+    echo "<tr><th>Account ID</th><th>Customer ID</th><th>isAdmin</th><th>Email</th><th>Password</th></tr>";
     foreach ($xml->accounts->account as $account) {
         echo "<tr>";
         echo "<td>" . $account->account_ID . "</td>";
         echo "<td>" . $account->customer_ID . "</td>";
         echo "<td>" . $account->isAdmin . "</td>";
+        echo "<td>" . $account->email . "</td>";
+        echo "<td>" . $account->password . "</td>";
         echo "</tr>";
     }
     echo "</table>";
