@@ -232,6 +232,8 @@
 </body>
 
     <script>
+            var currentdishName;
+
             function saveChanges() {
                 document.getElementById('mainDishForm').submit();
 
@@ -239,12 +241,30 @@
             }
 
             function logDishInfo(button) {
-                var dishName = button.getAttribute('data-dishname');
+                currentdishName = button.getAttribute('data-dishname');
                 var dishPrice = button.getAttribute('data-dishprice');
-                console.log('Dish Name:', dishName);
+                console.log('Dish Name:', currentdishName);
                 console.log('Dish Price:', dishPrice);
             }
 
-</script>
+            function deleteDish() {
+                if (!currentdishName) {
+                    console.error('No dish selected.');
+                    return;
+                }
+                // Send a POST request to editPrice.php
+                fetch('./assets/scripts/editPrice.php', {
+                    method: 'POST',
+                    body: 'dishName=' + encodeURIComponent(currentdishName),
+                })
+                    .then(response => response.text())
+                    .then(data => console.log('Response from editPrice.php:', data))
+                    .catch(error => console.error('Error:', error));
+
+                currentdishName = null; // Reset the currentDishName after deletion
+            }
+
+
+    </script>
 
 </html>
