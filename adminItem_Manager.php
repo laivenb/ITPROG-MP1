@@ -21,8 +21,30 @@
                     <h1 class="Hmain">Main</h1>
                 </div>
                 <div class="headerAdd">
+                    <span class="addSpanBtn"><button type="button" class="addMainBtn" data-bs-toggle="modal" data-bs-target="#addMainModal" >+  ADD</button></span>
                     <!-- Add Modal Start-->
-                    <span class="addSpanBtn"><button type="button" class="addBtn" onclick="addMainFunc()">+  ADD</button></span>
+                    <div class="modal fade" id="addMainModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content modalContentMain">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Add Main Dish</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="mainDishForm" action="./assets/scripts/saveMdish.php" method="post">
+                                        <label for="Mname">Main Dish Name:</label><br>
+                                        <input type="text" id="Mname" name="Mname"><br>
+                                        <label for="Mprice">Price:</label><br>
+                                        <input type="text" id="Mprice" name="Mprice">
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" onclick="saveChanges()" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- Add Modal End -->
                 </div>
             </div>
@@ -37,7 +59,7 @@
             include './assets/scripts/dbh.inc.php';
 
             try {
-                $pdo = new PDO($dsn, $dbusername, $dbpassword);
+                $pdo = $GLOBALS['pdo'];
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                 $stmt = $pdo->query("SELECT * FROM maindish");
@@ -49,7 +71,8 @@
                     echo "<div><span>".$row['dish_name']."</span></div>";
                     echo "<div><span>".$row['price']."</span></div>";
                     echo "<div><span><button type='button' class='btn btn-secondary'>Edit</button></span></div>";
-                    echo "<div><span><button type='button' class='btn btn-danger'>Delete</button></span></div>";
+                    echo "<div><span><button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#deleteModal' data-dishname='".$row['dish_name']."' data-dishprice='".$row['price']."' onclick='logDishInfo(this)'>Delete</button></span></div>";
+
                 }
                 echo "</div>";
 
@@ -57,7 +80,27 @@
                 echo "Connection failed: " . $e->getMessage();
             }
             ?>
-            <!-- Main Dish Display Start -->
+            <!-- Main Dish Display End -->
+            <!-- Modal Delete Start -->
+            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content modalContentMain">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Delete Dish</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Do you want to delete the dish?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                            <button type="button" onclick="deleteDish()" class="btn btn-danger">Yes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Delete End -->
+
             <!-- Side Dish Display Start -->
             <div class="headerMainDish">
                 <div class="categoryName">
@@ -78,7 +121,7 @@
             include './assets/scripts/dbh.inc.php';
 
             try {
-                $pdo = new PDO($dsn, $dbusername, $dbpassword);
+                $pdo = $GLOBALS['pdo'];
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                 $stmt = $pdo->query("SELECT * FROM sidedish");
@@ -119,7 +162,7 @@
             include './assets/scripts/dbh.inc.php';
 
             try {
-                $pdo = new PDO($dsn, $dbusername, $dbpassword);
+                $pdo = $GLOBALS['pdo'];
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                 $stmt = $pdo->query("SELECT * FROM drink");
@@ -160,7 +203,7 @@
             include './assets/scripts/dbh.inc.php';
 
             try {
-                $pdo = new PDO($dsn, $dbusername, $dbpassword);
+                $pdo = $GLOBALS['pdo'];
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                 $stmt = $pdo->query("SELECT * FROM combo");
@@ -187,5 +230,21 @@
         </div>
     <!-- Container Display End -->
 </body>
+
+    <script>
+            function saveChanges() {
+                document.getElementById('mainDishForm').submit();
+
+                $('#addMainModal').modal('hide');
+            }
+
+            function logDishInfo(button) {
+                var dishName = button.getAttribute('data-dishname');
+                var dishPrice = button.getAttribute('data-dishprice');
+                console.log('Dish Name:', dishName);
+                console.log('Dish Price:', dishPrice);
+            }
+
+</script>
 
 </html>
