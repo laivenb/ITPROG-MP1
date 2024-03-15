@@ -17,9 +17,12 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- Database: `airline_meal`
---
+-- Check if the database exists, create it if it doesn't
+CREATE DATABASE IF NOT EXISTS `airline_meal`;
+USE `airline_meal`;
+-- Rest of the SQL dump remains the same
+-- Table structures, data, and constraints
+COMMIT;
 
 -- --------------------------------------------------------
 

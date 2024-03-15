@@ -1,3 +1,79 @@
+<!DOCTYPE airline_meal [
+    <!ELEMENT airline_meal (accounts, customers, maindishes, sidedishes, drinks, orders, combos, transactions, discountedorderitems)>
+    <!ATTLIST airline_meal xmlns:xsi CDATA #IMPLIED>
+
+    <!ELEMENT accounts (account+)>
+    <!ELEMENT account (account_ID, customer_ID, isAdmin, username, email, password)>
+    <!ELEMENT account_ID (#PCDATA)>
+    <!ELEMENT customer_ID (#PCDATA)>
+    <!ELEMENT isAdmin (#PCDATA)>
+    <!ELEMENT username (#PCDATA)>
+    <!ELEMENT email (#PCDATA)>
+    <!ELEMENT password (#PCDATA)>
+
+    <!ELEMENT customers (customer+)>
+    <!ELEMENT customer (customer_ID, customer_Name, contact_Number)>
+    <!ELEMENT customer_ID (#PCDATA)>
+    <!ELEMENT customer_Name (#PCDATA)>
+    <!ELEMENT contact_Number (#PCDATA)>
+
+    <!ELEMENT maindishes (maindish+)>
+    <!ELEMENT maindish (dish_ID, dish_name, price)>
+    <!ELEMENT dish_ID (#PCDATA)>
+    <!ELEMENT dish_name (#PCDATA)>
+    <!ELEMENT price (#PCDATA)>
+
+    <!ELEMENT sidedishes (sidedish+)>
+    <!ELEMENT sidedish (side_ID, side_name, price)>
+    <!ELEMENT side_ID (#PCDATA)>
+    <!ELEMENT side_name (#PCDATA)>
+    <!ELEMENT price (#PCDATA)>
+
+    <!ELEMENT drinks (drink+)>
+    <!ELEMENT drink (drink_ID, drink_name, price)>
+    <!ELEMENT drink_ID (#PCDATA)>
+    <!ELEMENT drink_name (#PCDATA)>
+    <!ELEMENT price (#PCDATA)>
+
+    <!ELEMENT orders (order+)>
+    <!ELEMENT order (order_ID, customer_ID, main_ID?, side_ID?, drink_ID?, combo_ID?, flight_no, orderDate)>
+    <!ELEMENT order_ID (#PCDATA)>
+    <!ELEMENT main_ID (#PCDATA)>
+    <!ELEMENT side_ID (#PCDATA)>
+    <!ELEMENT drink_ID (#PCDATA)>
+    <!ELEMENT combo_ID (#PCDATA)>
+    <!ELEMENT flight_no (#PCDATA)>
+    <!ELEMENT orderDate (#PCDATA)>
+    <!ATTLIST order_ID xsi:nil (true) #IMPLIED>
+    <!ATTLIST main_ID xsi:nil (true) #IMPLIED>
+    <!ATTLIST side_ID xsi:nil (true) #IMPLIED>
+    <!ATTLIST drink_ID xsi:nil (true) #IMPLIED>
+    <!ATTLIST combo_ID xsi:nil (true) #IMPLIED>
+
+    <!ELEMENT combos (combo+)>
+    <!ELEMENT combo (combo_ID, combo_Name, price)>
+    <!ELEMENT combo_ID (#PCDATA)>
+    <!ELEMENT combo_Name (#PCDATA)>
+    <!ELEMENT price (#PCDATA)>
+    <!ATTLIST combo_ID xsi:nil (true) #IMPLIED>
+
+    <!ELEMENT transactions (transaction+)>
+    <!ELEMENT transaction (transaction_ID, order_ID, total_price, transaction_date?, isPaid)>
+    <!ELEMENT transaction_ID (#PCDATA)>
+    <!ELEMENT order_ID (#PCDATA)>
+    <!ELEMENT total_price (#PCDATA)>
+    <!ELEMENT transaction_date (#PCDATA)>
+    <!ELEMENT isPaid (#PCDATA)>
+    <!ATTLIST transaction_date xsi:nil (true) #IMPLIED>
+
+    <!ELEMENT discountedorderitems (discountedorderitem+)>
+    <!ELEMENT discountedorderitem (discounted_ID, order_ID, discount_amount, isPWD)>
+    <!ELEMENT discounted_ID (#PCDATA)>
+    <!ELEMENT order_ID (#PCDATA)>
+    <!ELEMENT discount_amount (#PCDATA)>
+    <!ELEMENT isPWD (#PCDATA)>
+]>
+
 <airline_meal xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <accounts>
         <account>
