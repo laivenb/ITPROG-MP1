@@ -13,8 +13,8 @@
                     <ul class="navBarDrop">
                         <li><a href="#">MAIN</a></li>
                         <li><a href="#">SIDES</a></li>
-                        <li><a href="#">DRINKS</a></li>
-                        <li><a href="#">COMBO</a></li>
+                        <li><a href="drinks.php">DRINKS</a></li>
+                        <li><a href="combo.php">COMBO</a></li>
                     </ul>
                 </div>
             </li>
