@@ -1,0 +1,50 @@
+<flights>
+    <flight>
+        <flightNumber>Z2 192</flightNumber>
+        <airline>Philippines AirAsia</airline>
+        <departure>10:40</departure>
+        <arrival>15:50</arrival>
+        <code>NRT</code>
+        <destination>Tokyo</destination>
+    </flight>
+    <flight>
+        <flightNumber>PR 112</flightNumber>
+        <departure>11:20</departure>
+        <arrival>09:15</arrival>
+        <code>LAX</code>
+        <airline>Philippine Airlines</airline>
+        <destination>Los Angeles</destination>
+    </flight>
+    <flight>
+        <flightNumber>Z2 358</flightNumber>
+        <departure>11:30</departure>
+        <arrival>13:00</arrival>
+        <code>TAG</code>
+        <airline>Philippines AirAsia</airline>
+        <destination>Panglao</destination>
+    </flight>
+    <flight>
+        <flightNumber>DG 6047</flightNumber>
+        <departure>11:45</departure>
+        <arrival>13:05</arrival>
+        <code>USU</code>
+        <airline>Cebgo</airline>
+        <destination>Busuanga</destination>
+    </flight>
+    <flight>
+        <flightNumber>PR 2853</flightNumber>
+        <departure>11:50</departure>
+        <arrival>13:20</arrival>
+        <code>CEB</code>
+        <airline>Philippine Airlines</airline>
+        <destination>Cebu City</destination>
+    </flight>
+    <flight>
+        <flightNumber>BI 3355</flightNumber>
+        <departure>11:50</departure>
+        <arrival>13:20</arrival>
+        <code>CEB</code>
+        <airline>Royal Brunei Airlines</airline>
+        <destination>Cebu City</destination>
+    </flight>
+</flights>

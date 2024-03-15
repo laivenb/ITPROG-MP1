@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="assets/styles/register.css">
 </head>
 <body>
+    <?php $pdo = require __DIR__ . "./assets/scripts/dbh.inc.php"?>
+
     <div class="container">
         <form action="#" enctype="multipart/form-data">
             <img class="logo" id="logo" src="./assets/images/loginLogo.png"/>

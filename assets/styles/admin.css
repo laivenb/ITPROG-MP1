@@ -1,0 +1,165 @@
+/* Import Fonts */
+@import url('fontDefining.css');
+
+/*-- Background Start --*/
+body {
+    background-color: #ddcdc0;
+    background-image: url('/ITPROG-MP1/assets/images/SkyBG50.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+}
+/*-- Background End --*/
+
+/*-- SideBar Main Start --*/
+.sideBar {
+    width: 110px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 30px 15px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    transition: width 0.5s;
+}
+/*-- SideBar-User Start --*/
+.user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 60px;
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 8px;
+    margin-left: -7px;
+    margin-right: auto;
+    font-family: 'IntroRust-Base', sans-serif;
+    overflow: hidden;
+}
+
+.nameDisplay {
+    display: none;
+}
+
+.user p {
+    padding-left: 5px;
+}
+
+.HnameDisplay {
+    padding-top: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+    padding-left: 5px;
+}
+.userProImg {
+    width: 40px;
+    border-radius: 50%;
+    margin: auto;
+}
+/*-- SideBar-User End --*/
+/*-- SideBar-List Start --*/
+.sideBarList {
+    list-style: none;
+    padding: 0 15px;
+}
+
+.sideBarList li {
+    margin: 30px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+}
+.sideBarList li p{
+    white-space: nowrap;
+    transition: opacity 0.5s ease-in;
+    opacity: 0;
+}
+.sideBarRef {
+    text-decoration: none;
+    color: #302f2f;
+ }
+.sideBarList li img {
+    width: 30px;
+    margin-right: 0;
+}
+/*-- SideBar-List End --*/
+/*-- SideBar-LogOut Start --*/
+.logOutList {
+    list-style: none;
+    padding: 0 15px;
+}
+
+.logOutList li {
+    margin: 30px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+}
+.logOutList li img {
+    width: 30px;
+    margin-right: 0;
+}
+.logOutList li p {
+    white-space: nowrap;
+    transition: opacity 0.5s ease-in;
+    opacity: 0;
+}
+/*-- SideBar-LogOut End --*/
+.sideBar:hover {
+    width: 250px;
+
+}
+.sideBar:hover .user {
+    width: 100%;
+    background: rgba(255,255,255, 0.2);
+    backdrop-filter: blur(5px);
+}
+.sideBar:hover .nameDisplay {
+    display: block;
+}
+.sideBar:hover .sideBarList li p {
+    text-decoration: none;
+    padding-top: 15px;
+    opacity: 1;
+}
+.sideBar:hover .sideBarList li img {
+    margin-right: 10px;
+}
+.sideBar:hover .logOutList li p {
+    text-decoration: none;
+    padding-top: 15px;
+    opacity: 1;
+}
+.sideBar:hover .logOutList li img {
+    margin-right: 10px;
+}
+.sideBar:hover .sideBarList li{
+    justify-content: flex-start;
+}
+.sideBar:hover .logOutList li{
+    justify-content: flex-start;
+}
+/*-- SideBar Main End --*/
+
+/*-- Welcome Logo Start --*/
+.adminBanner {
+    width: 80vw;
+    height: 100vh;
+    margin-left: 220px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.logoBlackImg {
+    width: 90%;
+    position: relative;
+}
+/*-- Welcome Logo End --*/
