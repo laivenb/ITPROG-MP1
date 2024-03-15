@@ -7,6 +7,8 @@
   <!-- Import Header Stylesheet -->
   <link rel="stylesheet" href="assets/styles/header.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
   <style>
     body {
       background-color: #ddcdc0; 
@@ -58,7 +60,7 @@
     .navigation a:hover {
         color: #ffffff;
     }
-</head>
+    </style>
 <body>
   <!-- Navigation Bar Start-->
   <div class="navBar">
