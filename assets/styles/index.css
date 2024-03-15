@@ -16,7 +16,7 @@ body {
 
 /*-- Banner Box Start --*/
 .parentBanner {
-    width: 100vw;
+    width: 80vw;
     height: 90vh;
     display: flex;
     justify-content: center;
