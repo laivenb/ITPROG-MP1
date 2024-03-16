@@ -21,7 +21,7 @@
     <!-- Side Bar List End -->
     <!-- Side Bar Log Out Start -->
     <ul class="logOutList">
-        <li><a href="logout.php"><img src="./assets/images/admin/logOut.png" alt=""><p>Log Out</p></a></li>
+        <li><a href="logout.php"><img src="./assets/images/admin/logOut.png" alt=""><p style="display: none;">Log Out</p></a></li>
     </ul>
     <!-- Side Bar Log Out End -->
 </div>
