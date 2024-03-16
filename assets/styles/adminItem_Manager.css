@@ -34,7 +34,7 @@ body {
     font-size: 30px;
 }
 
-.addMainBtn {
+.addMainBtn, .addSideBtn, .addDrinkBtn, .addComboBtn {
     border: none;
     background-color: transparent;
 }

@@ -76,6 +76,7 @@ body {
     cursor: pointer;
 }
 .sideBarList li p{
+    padding-top: 15px;
     white-space: nowrap;
     transition: opacity 0.5s ease-in;
     opacity: 0;
