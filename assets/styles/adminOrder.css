@@ -9,14 +9,14 @@ body {
 /*-- Background End --*/
 
 /*-- Flight Display Start--*/
-.headerFlight {
+.headerOrder {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 50px;
 }
 
-.airportName {
+.orderTitle {
     flex: 1;
     font-family: 'IntroRust-Base', sans-serif;
 }
@@ -37,7 +37,7 @@ body {
     margin-left: 250px;
 }
 
-.flightHeaderContainers {
+.orderHeaderContainers {
     width: 100%;
     height: 50px;
     background: rgba(255,255,255, 0.5);
@@ -45,7 +45,7 @@ body {
     display: grid;
     grid-template-columns: repeat(7, 1fr) 2fr;
 }
-.flightHeaderContainers > div {
+.orderHeaderContainers > div {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,10 +54,10 @@ body {
     font-family: 'GlacialIndi', sans-serif;
 }
 
-.flightHeaderContainers > div span {
+.orderHeaderContainers > div span {
     margin-left: 30px;
 }
-.flightContainers {
+.orderContainers {
     width: 100%;
     height: 50px;
     background: rgba(255,255,255, 0.3);
@@ -65,7 +65,7 @@ body {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
 }
-.flightContainers > div {
+.orderContainers > div {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -73,11 +73,11 @@ body {
     border-radius: 30px;
 }
 
-.flightContainers > div span {
+.orderContainers > div span {
     margin-left: 30px;
 }
 
-.flightInfo {
+.orderInfo {
     width: 100%;
     height: 50px;
     background: rgba(255,255,255, 0.2);
@@ -87,14 +87,14 @@ body {
     grid-template-columns: repeat(7, 1fr);
 }
 
-.flightInfo > div {
+.orderInfo > div {
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     border-radius: 30px;
 }
-.flightInfo > div > span:not([class]) {
+.orderInfo > div > span:not([class]) {
     line-height: 1;
 }
 

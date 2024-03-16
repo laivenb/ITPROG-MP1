@@ -15,21 +15,21 @@
 <body>
 <!-- Flight Display Start -->
 <div class="boxContainers">
-    <div class="headerFlight">
-        <div class="airportName">
+    <div class="headerOrder">
+        <div class="orderTitle">
             <h1 class="HNAIA">Order History</h1>
         </div>
         <div class="headerDate">
             <span class="rightDate">-</span>
         </div>
     </div>
-    <div class="flightHeaderContainers">
+    <div class="orderHeaderContainers">
         <div><span>Order ID</span></div>
         <div><span>Customer ID</span></div>
-        <div><span>Main_ID</span></div>
-        <div><span>Side_ID</span></div>
-        <div><span>Drink_ID</span></div>
-        <div><span>Combo_ID</span></div>
+        <div><span>Main ID</span></div>
+        <div><span>Side ID</span></div>
+        <div><span>Drink ID</span></div>
+        <div><span>Combo ID</span></div>
         <div><span>Flight #</span></div>
         <div><span>Order Date</span></div>
     </div>
@@ -45,11 +45,15 @@
         $flightNo = $order->flight_no;
         $orderDate = $order->orderDate;
         ?>
-        <div class="flightContainers">
-            <div><span><?= $flightNumber ?><br><span class="addInfo"><?= $airline ?></span></span></div>
-            <div><span><?= $departure ?></span></div>
-            <div><span><?= $arrival ?></span></div>
-            <div><span><?= $code ?><br><span class="addInfo"><?= $destination ?></span></span></div>
+        <div class="orderHeaderContainers">
+            <div><span><?= $orderID ?></span></div>
+            <div><span><?= $customerID ?></span></div>
+            <div><span><?= $mainID ?></span></div>
+            <div><span><?= $sideID ?></span></div>
+            <div><span><?= $drinkID ?></span></div>
+            <div><span><?= $comboID ?></span></div>
+            <div><span><?= $flightNo ?></span></div>
+            <div><span><?= $orderDate ?></span></div>
         </div>
     <?php } ?>
 </div>

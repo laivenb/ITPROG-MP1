@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['account_id'] = $account['account_ID']; // Make sure to use the correct column name
         if ($account['isAdmin'] == 1) {
             // Redirect to admin dashboard
-            header("Location: admindashboard.php");
+            header("Location: admin.php");
             exit();
         } else {
             // Redirect to user dashboard

@@ -1,0 +1,76 @@
+/* Import Fonts */
+@import url('fontDefining.css');
+
+/*-- Background Start --*/
+body {
+    background-color: #ddcdc0;
+    background-image: url('/ITPROG-MP1/assets/images/SkyBG50.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+}
+
+/*-- Background End --*/
+
+/*-- Header Start --*/
+.headerCore {
+    display: flex;
+    justify-content: center;
+    font-family: 'IntroRust-Base', sans-serif;
+    width: 75vw;
+    margin-top: 20px;
+    margin-left: 250px;
+}
+
+.coreName {
+    width: 100%;
+    font-family: 'IntroRust-Base', sans-serif;
+    text-align: center;
+}
+
+.Hteam {
+    font-size: 40px;
+}
+/*-- Header End --*/
+
+/*-- Core Container Start --*/
+.coreContainers {
+    width: 75vw;
+    margin-left: 250px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.individualCore {
+    padding-top: 10px;
+    background: rgba(255,255,255, 0.5);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    width: 270px;
+    height: 300px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.individualCore img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.name {
+    font-weight: bold;
+}
+
+.role {
+    font-weight: normal;
+}
+/*-- Core Container End --*/

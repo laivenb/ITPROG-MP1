@@ -11,8 +11,6 @@
             <li><a href="#">MENU</a>
                 <div class="navDropdown">
                     <ul class="navBarDrop">
-                        <li><a href="#">MAIN</a></li>
-                        <li><a href="#">SIDES</a></li>
                         <li><a href="main.php">MAIN</a></li>
                         <li><a href="sides.php">SIDES</a></li>
                         <li><a href="drinks.php">DRINKS</a></li>
