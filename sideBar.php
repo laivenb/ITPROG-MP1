@@ -4,9 +4,9 @@
 <div class="sideBar">
     <!-- User Profile Start -->
     <div class="user">
-        <img src="./assets/images/admin/anonUser.png" alt="" class="userProImg">
+        <img src="./assets/images/coreMembers/cay_lee.png" alt="" class="userProImg">
         <div class="nameDisplay">
-            <h2 class="HnameDisplay">Admin Admin</h2>
+            <h2 class="HnameDisplay">Cayra Maxine Lee</h2>
             <p>Project Manager</p>
         </div>
     </div>
@@ -21,7 +21,7 @@
     <!-- Side Bar List End -->
     <!-- Side Bar Log Out Start -->
     <ul class="logOutList">
-        <li><img src="./assets/images/admin/logOut.png" alt=""><p>Log Out</p></li>
+        <li><a href="logout.php"><img src="./assets/images/admin/logOut.png" alt=""><p style="display: none;">Log Out</p></a></li>
     </ul>
     <!-- Side Bar Log Out End -->
 </div>

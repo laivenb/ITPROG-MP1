@@ -4,8 +4,6 @@ include 'dbh.inc.php';
 if (isset($_POST['dishName'])) {
     $dish_name = htmlspecialchars($_POST['dishName']);
 
-    echo '<script>console.log("Dish Name: ' . $dish_name . '");</script>';
-
     $pdo = $GLOBALS['pdo'];
     $stmt = $pdo->prepare("SELECT dish_ID FROM maindish WHERE dish_name = :dishName");
 
