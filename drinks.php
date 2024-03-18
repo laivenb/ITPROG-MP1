@@ -7,6 +7,8 @@
   <!-- Import Header Stylesheet -->
   <link rel="stylesheet" href="assets/styles/header.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  </head>
   <style>
     body {
       background-color: #ddcdc0; 
@@ -58,8 +60,20 @@
     .navigation a:hover {
         color: #ffffff;
     }
-    </style>
-</head>
+
+    /* Notification Styles */
+    .notification {
+      position: fixed;
+      top: 20px; /* Adjust this value to position it from the top */
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      display: none;
+    }
+ </style>
 <body>
   <!-- Navigation Bar Start-->
   <div class="navBar">
@@ -89,23 +103,41 @@
         <img src="assets/images/orange_juice.jpg" alt="Orange Juice"> 
         <p>Orange Juice</p>
         <p>&#8369;100</p>
+        <button onclick="addToCart('Orange Juice', 100)">Add to Cart</button>
       </article>
       <article class="menu-item">
         <img src="assets/images/cola_can.jpg" alt="Cola">
-        <p>Mashed Potato</p>
+        <p>Coca-Cola Can</p>
         <p>&#8369;100</p>
+        <button onclick="addToCart('Coca-Cola Can', 100)">Add to Cart</button>
       </article>
       <article class="menu-item">
         <img src="assets/images/coffee.jpg" alt="Coffee">
         <p>Coffee [Hot/Cold]</p>
         <p>&#8369;200</p>
+        <button onclick="addToCart('Coffee', 200)">Add to Cart</button>
       </article>
     </section>
 
     <div class="navigation">
-      <a href="#" class="next-btn">NEXT</a>
-      <a href="#" class="cancel-btn">CANCEL</a>
+      <a href="order_summary.php" class="next-btn">NEXT</a>
+      <a href="sides.php" class="back-btn">BACK</a>
     </div>
+
+    <!-- Notification Element -->
+    <div class="notification" id="notification">Dish Added to Cart</div>
+
   </main>
+  <script>
+    // Function to add item to cart and display notification
+    function addToCart(itemName, price) {
+      // Display the notification
+      var notification = document.getElementById("notification");
+      notification.style.display = "block";
+      setTimeout(function(){
+        notification.style.display = "none";
+      }, 3000); // Hide notification after 3 seconds
+    }
+  </script>
 </body>
 </html>

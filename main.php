@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Main</title>
+  <link rel="stylesheet" href="assets/styles/main.css">
   <!-- Import Header Stylesheet -->
   <link rel="stylesheet" href="assets/styles/header.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
-      background-color: #ddcdc0; 
+      background-color: #ddcdc0; /* Set your desired background color */
     }
 
     .menu-items {
@@ -18,30 +19,30 @@
 
     .menu-item {
       display: inline-block;
-      margin: 0 20px; 
-      vertical-align: top; 
-      border: 2px solid #5c5c5c; 
-      padding: 10px; 
+      margin: 0 20px; /* Adjust the spacing between menu items */
+      vertical-align: top; /* Align items at the top */
+      border: 2px solid #5c5c5c; /* Add border */
+      padding: 10px; /* Add padding */
       background-color: #d39d56;
-      width: 300px; 
+      width: 300px; /* Set a fixed width for menu items */
     }
 
     .menu-item img {
-      max-width: 100%; 
-      max-height: 200px; 
+      max-width: 100%; /* Ensure images are not wider than their container */
+      max-height: 200px; /* Set a maximum height for consistency */
       display: block;
-      margin: 0 auto; 
+      margin: 0 auto; /* Centers the images horizontally */
     }
 
     h2 {
-      text-align: center; 
+      text-align: center; /* Center the "MAIN DISHES" heading */
     }
 
     .navigation {
-      display: flex; 
+      display: flex; /* Use flexbox layout */
       margin-top: 100px;
-      justify-content: flex-end; 
-      padding-right: 20px; 
+      justify-content: flex-end; /* Align items to the right */
+      padding-right: 20px; /* Add some padding to the right */
     }
 
     .navigation a {
@@ -58,54 +59,71 @@
     .navigation a:hover {
         color: #ffffff;
     }
+
+    /* Notification Styles */
+    .notification {
+      position: fixed;
+      top: 20px; /* Adjust this value to position it from the top */
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      display: none;
+    }
   </style>
 </head>
 <body>
-  <!-- Navigation Bar Start-->
-  <div class="navBar">
-    <img class="logo" id="logo" src="./assets/images/SkyCuisineLogo.png"/>
-    <ul>
-      <li><a href="#">HOME</a></li>
-      <li><a href="#">MENU</a>
-        <div class="navDropdown">
-          <ul class="navBarDrop">
-            <li><a href="#">MAIN</a></li>
-            <li><a href="#">SIDES</a></li>
-            <li><a href="#">DRINKS</a></li>
-            <li><a href="#">COMBO</a></li>
-          </ul>
-        </div>
-      </li>
-      <li><a href="#">CART</a></li>
-      <li><a href="login.php">LOGIN</a></li>
-    </ul>
-  </div>
-  <!-- Navigation Bar End-->
+  <!-- Required Elements per Page Start -->
+      <?php include 'header.php'; ?>                               <!-- Header .php -->
+      <?php include './assets/scripts/frameworkLib.php'; ?>        <!-- Framework PHP Script Reference-->
+  <!-- Required Elements per Page End -->
 
   <main>
+  <br><br>
     <h2>MAIN DISHES</h2>
+    <br>
     <section class="menu-items">
       <article class="menu-item">
-        <img src="assets/images/carbonara.jpg" alt="Carbonara"> 
+        <img src="assets/images/carbonara.jpg" alt="Carbonara"> <br>
         <p>Carbonara</p>
         <p>&#8369;350</p>
+        <button onclick="addToCart('Carbonara', 350)">Add to Cart</button>
       </article>
       <article class="menu-item">
-        <img src="assets/images/chicken_adobo.jpg" alt="Chicken Adobo">
+        <img src="assets/images/chicken_adobo.jpg" alt="Chicken Adobo"><br>
         <p>Chicken Adobo</p>
         <p>&#8369;350</p>
+        <button onclick="addToCart('Chicken Adobo', 350)">Add to Cart</button>
       </article>
       <article class="menu-item">
-        <img src="assets/images/salmon_steak.jpg" alt="Salmon Steak">
+        <img src="assets/images/salmon_steak.jpg" alt="Salmon Steak"><br>
         <p>Salmon Steak</p>
         <p>&#8369;400</p>
+        <button onclick="addToCart('Salmon Steak', 400)">Add to Cart</button>
       </article>
     </section>
 
     <div class="navigation">
-      <a href="#" class="next-btn">NEXT</a>
+      <a href="sides.php" class="next-btn">NEXT</a>
       <a href="#" class="cancel-btn">CANCEL</a>
     </div>
+
+    <!-- Notification Element -->
+    <div class="notification" id="notification">Dish Added to Cart</div>
+
   </main>
+  <script>
+    // Function to add item to cart and display notification
+    function addToCart(itemName, price) {
+      // Display the notification
+      var notification = document.getElementById("notification");
+      notification.style.display = "block";
+      setTimeout(function(){
+        notification.style.display = "none";
+      }, 3000); // Hide notification after 3 seconds
+    }
+  </script>
 </body>
 </html>
