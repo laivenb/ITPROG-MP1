@@ -4,63 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Main</title>
+  <link rel="stylesheet" href="assets/styles/drinks.css">
   <!-- Import Header Stylesheet -->
   <link rel="stylesheet" href="assets/styles/header.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/css/bootstrap.min.css" rel="stylesheet">
   
   </head>
-  <style>
-    body {
-      background-color: #ddcdc0; 
-    }
-
-    .menu-items {
-      text-align: center;
-    }
-
-    .menu-item {
-      display: inline-block;
-      margin: 0 20px; 
-      vertical-align: top; 
-      border: 2px solid #5c5c5c; 
-      padding: 10px; 
-      background-color: #d39d56;
-      width: 300px; 
-    }
-
-    .menu-item img {
-      max-width: 100%; 
-      max-height: 200px; 
-      display: block;
-      margin: 0 auto; 
-    }
-
-    h2 {
-      text-align: center; 
-    }
-
-    .navigation {
-      display: flex; 
-      margin-top: 100px;
-      justify-content: flex-end; 
-      padding-right: 20px; 
-    }
-
-    .navigation a {
-      display: inline-block;
-      padding: 10px 20px;
-      margin: 10px;
-      border: 2px solid ##944e30;
-      background-color: #944e30;
-      text-decoration: none;
-      color: #d39d56;
-      transition: background-color 0.3s, color 0.3s;
-    }
-
-    .navigation a:hover {
-        color: #ffffff;
-    }
- </style>
 <body>
   <!-- Navigation Bar Start-->
   <div class="navBar">

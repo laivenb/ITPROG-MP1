@@ -8,58 +8,7 @@
   <!-- Import Header Stylesheet -->
   <link rel="stylesheet" href="assets/styles/header.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #ddcdc0; /* Set your desired background color */
-    }
 
-    .menu-items {
-      text-align: center;
-    }
-
-    .menu-item {
-      display: inline-block;
-      margin: 0 20px; /* Adjust the spacing between menu items */
-      vertical-align: top; /* Align items at the top */
-      border: 2px solid #5c5c5c; /* Add border */
-      padding: 10px; /* Add padding */
-      background-color: #d39d56;
-      width: 300px; /* Set a fixed width for menu items */
-    }
-
-    .menu-item img {
-      max-width: 100%; /* Ensure images are not wider than their container */
-      max-height: 200px; /* Set a maximum height for consistency */
-      display: block;
-      margin: 0 auto; /* Centers the images horizontally */
-    }
-
-    h2 {
-      text-align: center; /* Center the "MAIN DISHES" heading */
-    }
-
-    .navigation {
-      display: flex; /* Use flexbox layout */
-      margin-top: 100px;
-      justify-content: flex-end; /* Align items to the right */
-      padding-right: 20px; /* Add some padding to the right */
-    }
-
-    .navigation a {
-      display: inline-block;
-      padding: 10px 20px;
-      margin: 10px;
-      border: 2px solid ##944e30;
-      background-color: #944e30;
-      text-decoration: none;
-      color: #d39d56;
-      transition: background-color 0.3s, color 0.3s;
-    }
-
-    .navigation a:hover {
-        color: #ffffff;
-    }
-  </style>
 </head>
 <body>
   <!-- Required Elements per Page Start -->
