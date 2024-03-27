@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Main</title>
+    <!-- Required Elements per Page Start -->
+    <?php include 'header.php'; ?>                               <!-- Header .php -->
+    <?php include './assets/scripts/frameworkLib.php'; ?>        <!-- Framework PHP Script Reference-->
+    <!-- Required Elements per Page End -->
   <link rel="stylesheet" href="assets/styles/main.css">
   <!-- Import Header Stylesheet -->
   <link rel="stylesheet" href="assets/styles/header.css">
@@ -11,37 +15,36 @@
 
 </head>
 <body>
-  <!-- Required Elements per Page Start -->
-      <?php include 'header.php'; ?>                               <!-- Header .php -->
-      <?php include './assets/scripts/frameworkLib.php'; ?>        <!-- Framework PHP Script Reference-->
-  <!-- Required Elements per Page End -->
-
-  <main>
-  <br><br>
-    <h2>MAIN DISHES</h2>
-    <br>
-    <section class="menu-items">
-      <article class="menu-item">
-        <img src="assets/images/carbonara.jpg" alt="Carbonara"> <br>
-        <p>Carbonara</p>
-        <p>&#8369;350</p>
-      </article>
-      <article class="menu-item">
-        <img src="assets/images/chicken_adobo.jpg" alt="Chicken Adobo"><br>
-        <p>Chicken Adobo</p>
-        <p>&#8369;350</p>
-      </article>
-      <article class="menu-item">
-        <img src="assets/images/salmon_steak.jpg" alt="Salmon Steak"><br>
-        <p>Salmon Steak</p>
-        <p>&#8369;400</p>
-      </article>
-    </section>
-
-    <div class="navigation">
-      <a href="#" class="next-btn">NEXT</a>
-      <a href="#" class="cancel-btn">CANCEL</a>
-    </div>
-  </main>
+  <!-- Display Container Start -->
+  <div class="displayContainer">
+      <h1 class="dishHeader">Main Dishes</h1>
+      <!-- Dish Container Start -->
+      <div class="dishContainers">
+          <!-- First Dish Start -->
+          <div class="dishItem">
+              <img src="assets/images/carbonara.jpg" alt="">
+              <p class="dishName">Carbonara</p>
+              <p class="dishPrice">₱350.00</p>
+          </div>
+           <!-- First Dish End -->
+          <!-- Second Dish Start -->
+          <div class="dishItem">
+              <img src="assets/images/chicken_adobo.jpg" alt="">
+              <p class="dishName">Chicken Adobo</p>
+              <p class="dishPrice">₱350.00</p>
+          </div>
+          <!-- Second Dish End -->
+          <!-- Third Dish Start -->
+          <div class="dishItem">
+              <img src="assets/images/salmon_steak.jpg" alt="">
+              <p class="dishName">Salmon Steak</p>
+              <p class="dishPrice">₱400.00</p>
+          </div>
+          <!-- Third Dish End -->
+      </div>
+      <!-- Dish Container End-->
+  </div>
+  <!-- Display Container End -->
+  <img class="cart" src="assets/images/Cart.png" alt="">
 </body>
 </html>

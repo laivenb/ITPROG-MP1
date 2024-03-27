@@ -1,61 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Main</title>
-  <link rel="stylesheet" href="assets/styles/drinks.css">
-  <!-- Import Header Stylesheet -->
-  <link rel="stylesheet" href="assets/styles/header.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  
-  </head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drinks</title>
+    <!-- Required Elements per Page Start -->
+    <?php include 'header.php'; ?>                               <!-- Header .php -->
+    <?php include './assets/scripts/frameworkLib.php'; ?>        <!-- Framework PHP Script Reference-->
+    <!-- Required Elements per Page End -->
+    <link rel="stylesheet" href="assets/styles/main.css">
+    <!-- Import Header Stylesheet -->
+    <link rel="stylesheet" href="assets/styles/header.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
 <body>
-  <!-- Navigation Bar Start-->
-  <div class="navBar">
-    <img class="logo" id="logo" src="./assets/images/SkyCuisineLogo.png"/>
-    <ul>
-      <li><a href="#">HOME</a></li>
-      <li><a href="#">MENU</a>
-        <div class="navDropdown">
-          <ul class="navBarDrop">
-            <li><a href="#">MAIN</a></li>
-            <li><a href="#">SIDES</a></li>
-            <li><a href="#">DRINKS</a></li>
-            <li><a href="#">COMBO</a></li>
-          </ul>
+<!-- Display Container Start -->
+<div class="displayContainer">
+    <h1 class="dishHeader">Drinks</h1>
+    <!-- Dish Container Start -->
+    <div class="dishContainers">
+        <!-- First Dish Start -->
+        <div class="dishItem">
+            <img src="assets/images/orange_juice.jpg" alt="">
+            <p class="dishName">Orange Juice</p>
+            <p class="dishPrice">₱100.00</p>
         </div>
-      </li>
-      <li><a href="#">CART</a></li>
-      <li><a href="login.php">LOGIN</a></li>
-    </ul>
-  </div>
-  <!-- Navigation Bar End-->
-
-  <main>
-    <h2>DRINKS</h2>
-    <section class="menu-items">
-      <article class="menu-item">
-        <img src="assets/images/orange_juice.jpg" alt="Orange Juice"> 
-        <p>Orange Juice</p>
-        <p>&#8369;100</p>
-      </article>
-      <article class="menu-item">
-        <img src="assets/images/cola_can.jpg" alt="Cola">
-        <p>Mashed Potato</p>
-        <p>&#8369;100</p>
-      </article>
-      <article class="menu-item">
-        <img src="assets/images/coffee.jpg" alt="Coffee">
-        <p>Coffee [Hot/Cold]</p>
-        <p>&#8369;200</p>
-      </article>
-    </section>
-
-    <div class="navigation">
-      <a href="#" class="next-btn">NEXT</a>
-      <a href="#" class="cancel-btn">CANCEL</a>
+        <!-- First Dish End -->
+        <!-- Second Dish Start -->
+        <div class="dishItem">
+            <img src="assets/images/cola_can.jpg" alt="">
+            <p class="dishName">Coca-Cola Can</p>
+            <p class="dishPrice">₱100.00</p>
+        </div>
+        <!-- Second Dish End -->
+        <!-- Third Dish Start -->
+        <div class="dishItem">
+            <img src="assets/images/coffee.jpg" alt="">
+            <p class="dishName">Coffee ( Hot | Iced )</p>
+            <p class="dishPrice">₱200.00</p>
+        </div>
+        <!-- Third Dish End -->
     </div>
-  </main>
+    <!-- Dish Container End-->
+</div>
+<!-- Display Container End -->
+<img class="cart" src="assets/images/Cart.png" alt="">
 </body>
 </html>
