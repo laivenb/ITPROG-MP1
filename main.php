@@ -1,9 +1,17 @@
+<?php
+session_start();
+
+    $cartItemsJson = isset($_POST['cartItems']) ? $_POST['cartItems'] : '[]';
+    $cartItems = json_decode($cartItemsJson, true);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Main</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Required Elements per Page Start -->
     <?php include 'header.php'; ?>                               <!-- Header .php -->
     <?php include './assets/scripts/frameworkLib.php'; ?>        <!-- Framework PHP Script Reference-->
@@ -44,7 +52,10 @@
       <!-- Dish Container End-->
   </div>
   <!-- Display Container End -->
-  <img class="cart" src="assets/images/Cart.png" alt="">
+  <button id="cartButton" style="border: none; background: none; cursor: pointer;">
+      <img class="cart" src="assets/images/Cart.png" alt="">
+  </button>
+
 
   <!-- Add to Cart Modal Start -->
   <div class="addCartModal" id="addCartModal">
@@ -56,9 +67,9 @@
           </div>
           <label for="quantityInput">Quantity:</label>
           <input type="number" class="qtyModal" value="1">
-          <form method="post" action="add_to_cart.php">
+          <form method="post">
               <input type="hidden" name="item_id" id="modalItemId">
-              <button class="submitBtnModal" type="submit" name="add_to_cart">Add to Cart</button>
+              <button class="submitBtnModal" type="submit" name="add_to_cart" onclick="addToCart(event)">Add to Cart</button>
           </form>
       </div>
   </div>
@@ -66,8 +77,58 @@
 </body>
 
     <script>
+        $(document).ready(function() {
+            $('#cartButton').click(function() {
+                window.location.href = 'order_summary.php';
+            });
+        });
+
+
+        var cartItems = <?php echo json_encode($cartItems); ?>;
+
+        function updateCartItemsInSession(cartItems) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', './assets/scripts/update_cart_items.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log('Cart items updated successfully');
+                }
+            };
+            xhr.send(JSON.stringify({ cartItems: cartItems }));
+        }
+
+        function addToCart(event) {
+            event.preventDefault();
+
+            var dishNameAndPrice = document.getElementById("modalDishNameAndPrice").textContent;
+            var [dishName, dishPrice] = dishNameAndPrice.split(/\s{2,}/);
+
+            var quantityInput = document.getElementById("quantityInput");
+            var quantity = quantityInput ? quantityInput.value : 1;
+
+            var imgName = document.getElementById("modalItemImg").getAttribute("src");
+
+            var item = {
+                dishName: dishName,
+                dishPrice: dishPrice,
+                quantity: quantity,
+                imgName: imgName
+            };
+
+            cartItems.push(item); // Add the new item to cartItems
+            sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update cartItems in session storage
+
+            updateCartItemsInSession(item);
+
+            console.log("Added to cart:", item);
+        }
+
+        //Add to Cart Function End
+
         // Modal Function Start
         var addCartModal = document.getElementById("addCartModal");
+
 
         function showAddToCartModal(dishName, dishPrice, itemId, imgName) {
             document.getElementById("modalDishNameAndPrice").innerText = dishName + "   " + dishPrice;

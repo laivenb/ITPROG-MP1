@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -137,7 +139,7 @@
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
         width: 30%;
         }
-    .dish-image {
+    .dish-image img{
       width: 50px;
       height: 50px;
       background-color: #ccc; /* Default color or background */
@@ -148,7 +150,7 @@
       display: flex; /* Use flexbox layout */
       align-items: center; /* Align items vertically */
     }
-    
+
     .dish {
       display: flex; /* Use flexbox layout */
       align-items: center; /* Align items vertically */
@@ -350,32 +352,6 @@
 
       <div class="order-summary" id="order-summary-container">
         <h3>Order Summary</h3>
-        <div class="dish">
-          <div id="image-box-1" class="dish-image"></div>
-          <span id="dish-name-1">Dish Name</span>
-          <span class="subtract" onclick="subtractQuantity(1)">-</span>
-          <span class="quantity" id="quantity-1">1</span>
-          <span class="add" onclick="addQuantity(1)">+</span>
-          <span class="dish-price" id="dish-price-1">$000</span>
-        </div>
-        <hr>
-        <div class="dish">
-          <div id="image-box-2" class="dish-image"></div>
-          <span id="dish-name-2">Dish Name</span>
-          <span class="subtract" onclick="subtractQuantity(2)">-</span>
-          <span class="quantity" id="quantity-2">1</span>
-          <span class="add" onclick="addQuantity(2)">+</span>
-          <span class="dish-price" id="dish-price-2">$000</span>
-        </div>
-        <hr>
-        <div class="dish">
-          <div id="image-box-3" class="dish-image"></div>
-          <span id="dish-name-3">Dish Name</span>
-          <span class="subtract" onclick="subtractQuantity(3)">-</span>
-          <span class="quantity" id="quantity-3">1</span>
-          <span class="add" onclick="addQuantity(3)">+</span>
-          <span class="dish-price" id="dish-price-3">$000</span>
-        </div>
         <hr>
         <div class="discount dish">
             <div class="discount-label">Discount</div>
@@ -396,11 +372,74 @@
   </main>
 
   <script>
-    // Function to subtract quantity
+      var cartItemsJson = sessionStorage.getItem('cartItems');
+
+      var cartItems = JSON.parse(cartItemsJson);
+
+      console.log(cartItems);
+
+      document.addEventListener('DOMContentLoaded', function() {
+          var cartItemsJson = sessionStorage.getItem('cartItems');
+          var cartItems = JSON.parse(cartItemsJson);
+
+          var container = document.getElementById('order-summary-container');
+
+          cartItems.forEach(function(item, index) {
+              var div = document.createElement('div');
+              div.className = 'dish';
+
+              var imageBox = document.createElement('div');
+              imageBox.className = 'dish-image';
+              var img = document.createElement('img');
+              img.src = item.imgName;
+              img.alt = item.dishName;
+              imageBox.appendChild(img);
+
+              var nameSpan = document.createElement('span');
+              nameSpan.textContent = item.dishName;
+
+              var quantitySpan = document.createElement('span');
+              quantitySpan.className = 'quantity';
+              quantitySpan.textContent = item.quantity;
+
+              var addSpan = document.createElement('span');
+              addSpan.className = 'add';
+              addSpan.textContent = '+';
+              addSpan.addEventListener('click', function() {
+                  addQuantity(index);
+              });
+
+              var subtractSpan = document.createElement('span');
+              subtractSpan.className = 'subtract';
+              subtractSpan.textContent = '-';
+              subtractSpan.addEventListener('click', function() {
+                  subtractQuantity(index);
+              });
+
+              var priceSpan = document.createElement('span');
+              priceSpan.className = 'dish-price';
+              priceSpan.textContent = item.dishPrice;
+
+              div.appendChild(imageBox);
+              div.appendChild(nameSpan);
+              div.appendChild(subtractSpan);
+              div.appendChild(quantitySpan);
+              div.appendChild(addSpan);
+              div.appendChild(priceSpan);
+
+              container.appendChild(div);
+              if (index < cartItems.length - 1) {
+                  container.appendChild(document.createElement('hr'));
+              }
+          });
+      });
+
+
+      // Function to subtract quantity
     function subtractQuantity(dishNumber) {
         var quantityElement = document.getElementById('quantity-' + dishNumber);
         var quantity = parseInt(quantityElement.innerText);
-        
+
         // Ensure quantity doesn't go below 0
         if (quantity > 0) {
             quantityElement.innerText = quantity - 1;
@@ -411,7 +450,7 @@
     function addQuantity(dishNumber) {
         var quantityElement = document.getElementById('quantity-' + dishNumber);
         var quantity = parseInt(quantityElement.innerText);
-        
+
         // Increment quantity
         quantityElement.innerText = quantity + 1;
     }
