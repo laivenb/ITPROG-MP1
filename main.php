@@ -19,7 +19,7 @@
   <div class="displayContainer">
       <h1 class="dishHeader">Main Dishes</h1>
       <!-- Dish Container Start -->
-      <div class="dishContainers">
+      <div class="dishContainers" id="dish">
           <!-- First Dish Start -->
           <div class="dishItem">
               <img src="assets/images/carbonara.jpg" alt="">
@@ -46,5 +46,41 @@
   </div>
   <!-- Display Container End -->
   <img class="cart" src="assets/images/Cart.png" alt="">
+
+  <!-- Add to Cart Modal Start -->
+  <div class="addCartModal" id="addCartModal">
+      <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>Do you want to add this item to your cart?</p>
+          <form method="post" action="add_to_cart.php">
+              <input type="hidden" name="item_id" value="1"> <!-- Use PHP to set the item ID -->
+              <button type="submit" name="add_to_cart">Add to Cart</button>
+          </form>
+      </div>
+  </div>
 </body>
+
+    <script>
+        // Modal Function Start
+        var addCartModal = document.getElementById("addCartModal");
+
+        var dishItem = document.getElementById("dish");
+
+        var span = document.getElementsByClassName("close")[0];
+
+        dishItem.onclick = function() {
+            addCartModal.style.display = "block";
+        }
+
+        span.onclick = function() {
+            addCartModal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == addCartModal) {
+                addCartModal.style.display = "none";
+            }
+        }
+        // Modal Function End
+    </script>
 </html>
