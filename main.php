@@ -20,36 +20,57 @@ $cartItems = isset($_SESSION['cartItems']) ? $_SESSION['cartItems'] : [];
 
 </head>
 <body>
-  <!-- Display Container Start -->
-  <div class="displayContainer">
-      <h1 class="dishHeader">Main Dishes</h1>
-      <!-- Dish Container Start -->
-      <div class="dishContainers" id="dish">
-          <!-- First Dish Start -->
-          <div class="dishItem" onclick="showAddToCartModal('Carbonara', '₱350.00', 1, 'carbonara.jpg')">
-              <img src="assets/images/carbonara.jpg" alt="">
-              <p class="dishName">Carbonara</p>
-              <p class="dishPrice">₱350.00</p>
-          </div>
-           <!-- First Dish End -->
-          <!-- Second Dish Start -->
-          <div class="dishItem" onclick="showAddToCartModal('Chicken Adobo', '₱350.00', 1, 'chicken_adobo.jpg')">
-              <img src="assets/images/chicken_adobo.jpg" alt="">
-              <p class="dishName">Chicken Adobo</p>
-              <p class="dishPrice">₱350.00</p>
-          </div>
-          <!-- Second Dish End -->
-          <!-- Third Dish Start -->
-          <div class="dishItem" onclick="showAddToCartModal('Salmon Steak', '₱400.00', 1, 'salmon_steak.jpg')">
-              <img src="assets/images/salmon_steak.jpg" alt="">
-              <p class="dishName">Salmon Steak</p>
-              <p class="dishPrice">₱400.00</p>
-          </div>
-          <!-- Third Dish End -->
-      </div>
-      <!-- Dish Container End-->
-  </div>
-  <!-- Display Container End -->
+<!-- Get Dishes Script Start-->
+<?php
+include_once './assets/scripts/dbh.inc.php';
+
+function getAllMainDishes()
+{
+    try {
+        $pdo = $GLOBALS['pdo'];
+
+        if (!$pdo) {
+            throw new PDOException('Failed to connect to the database.');
+        }
+
+        $sql = "SELECT dish_ID, dish_name, price FROM maindish";
+        $stmt = $pdo->prepare($sql);
+
+        if (!$stmt) {
+            throw new PDOException('Failed to prepare the SQL statement.');
+        }
+
+        $stmt->execute();
+        $mainDishes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $pdo = null;
+
+        return $mainDishes;
+    } catch (PDOException $e) {
+        return array('error' => $e->getMessage());
+    }
+}
+
+$mainDishes = getAllMainDishes();
+?>
+<!-- Get Dishes Script End-->
+
+<!-- Display Container Start -->
+<div class="displayContainer">
+    <h1 class="dishHeader">Main Dishes</h1>
+    <!-- Dish Container Start -->
+    <div class="dishContainers" id="dish">
+        <?php foreach ($mainDishes as $dish): ?>
+            <div class="dishItem" onclick="showAddToCartModal('<?php echo $dish['dish_name']; ?>', '₱<?php echo $dish['price']; ?>', <?php echo $dish['dish_ID']; ?>, 'main<?php echo $dish['dish_ID']; ?>.jpg')">
+                <img src="assets/images/main<?php echo $dish['dish_ID']; ?>.jpg" alt="">
+                <p class="dishName"><?php echo $dish['dish_name']; ?></p>
+                <p class="dishPrice">₱<?php echo $dish['price']; ?></p>
+            </div>
+        <?php endforeach; ?>
+    </div>
+    <!-- Dish Container End-->
+</div>
+<!-- Display Container End -->
   <button id="cartButton" style="border: none; background: none; cursor: pointer;">
       <img class="cart" src="assets/images/Cart.png" alt="">
   </button>
