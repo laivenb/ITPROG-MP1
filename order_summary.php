@@ -1,4 +1,7 @@
-
+<?php
+session_start();
+$cartItems = isset($_SESSION['cartItems']) ? $_SESSION['cartItems'] : [];
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,251 +11,9 @@
   <title>Order Summary</title>
   <link rel="stylesheet" href="assets/styles/main.css">
   <!-- Import Header Stylesheet -->
+    <link rel="stylesheet" href="assets/styles/order_summary.css">
   <link rel="stylesheet" href="assets/styles/header.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #ddcdc0; /* Set your desired background color */
-    }
-
-    h2 {
-        font-family: 'IntroRust-Base', sans-serif;
-      text-align: left; /* Center the "MAIN DISHES" heading */
-    }
-
-    h3 {
-        font-family: 'IntroRust-Base', sans-serif;
-      text-align: center; /* Center the "MAIN DISHES" heading */
-    }
-
-    .navigation {
-      display: flex; /* Use flexbox layout */
-      margin-top: 100px;
-      justify-content: flex-end; /* Align items to the right */
-      padding-right: 20px; /* Add some padding to the right */
-    }
-
-    .navigation a {
-      display: inline-block;
-      padding: 10px 20px;
-      margin: 10px;
-      border: 2px solid ##944e30;
-      background-color: #944e30;
-      text-decoration: none;
-      color: #d39d56;
-      transition: background-color 0.3s, color 0.3s;
-    }
-
-    .navigation a:hover {
-        color: #ffffff;
-    }
-
-    .introrustbase-font {
-        font-family: 'IntroRust-Base', sans-serif; /* Apply Intro Rust Base font to this specific element */
-    }
-
-    .container-wrapper {
-      display: flex; /* Use flexbox layout */
-      justify-content: space-between; /* Align items with space in between */
-      margin-top: 20px; /* Add margin at the top */
-    }
-
-    .contact-container {
-        width: 60%; /* Set the container width */
-        padding: 20px; /* Add some padding */
-        background-color: transparent; /* Set background color for the container */
-        border-radius: 10px; /* Add border-radius for rounded corners */
-        position: relative; /* Set the container position to relative */
-        margin-left: 2%;
-    }
-
-    .order-summary {
-      width: 30%; /* Set the container width */
-      padding: 20px; /* Add some padding */
-      background-color: #ffffff; /* Set white background */
-      border-radius: 10px; /* Add border-radius for rounded corners */
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-      position: relative; /* Set the container position to relative */
-      margin-right: 4%;
-      margin-top: 3%;
-    }
-
-    .custom-button {
-        position: relative; /* Change position to relative */
-        left: 0; /* Reset left position */
-        bottom: 20px; /* Adjust the bottom position */
-        background-color: #944e30;
-        border-radius: 15px;
-        color: #ffffff;
-        border: none;
-        cursor: pointer;
-        padding: 10px 0; /* Adjust padding */
-        text-align: center; /* Center text */
-        text-decoration: none; /* Remove underline */
-        width: 100%; /* Make button fill the whole width */
-        transition: background-color 0.3s ease;
-    }
-
-
-        .custom-button:hover {
-      background-color: #663300; /* Change background color on hover */
-    }
-
-
-    .cancel-button{
-        position: relative; /* Change position to relative */
-        left: 0; /* Reset left position */
-        bottom: 20px; /* Adjust the bottom position */
-        background-color: #944e30;
-        border-radius: 15px;
-        color: #ffffff;
-        border: none;
-        cursor: pointer;
-        padding: 10px 0; /* Adjust padding */
-        text-align: center; /* Center text */
-        text-decoration: none; /* Remove underline */
-        width: 100%; /* Make button fill the whole width */
-        transition: background-color 0.3s ease;
-    }
-
-
-        .cancel-button:hover{
-      background-color: #663300; /* Change background color on hover */
-    }
-
-
-.payment-section {
-    background-color: #ffffff; /* Set white background */
-    padding: 20px; /* Add some padding */
-    border-radius: 10px; /* Add border-radius for rounded corners */
-    margin-top: 20px; /* Add margin at the top */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-    width: 30%;
-    position: relative; /* Change position to relative */
-}
-
-    .payment-section {
-        background-color: #ffffff; /* Set white background */
-        padding: 20px; /* Add some padding */
-        border-radius: 10px; /* Add border-radius for rounded corners */
-        margin-top: 20px; /* Add margin at the top */
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-        width: 30%;
-        }
-    .dish-image img{
-      width: 50px;
-      height: 50px;
-      background-color: #ccc; /* Default color or background */
-      display: inline-block;
-      margin-right: 10px; /* Add some space between the image box and the dish name */
-    }
-    .dish {
-      display: flex; /* Use flexbox layout */
-      align-items: center; /* Align items vertically */
-    }
-
-    .dish {
-      display: flex; /* Use flexbox layout */
-      align-items: center; /* Align items vertically */
-      justify-content: space-between; /* Space between items */
-    }
-
-    .dish-name {
-      flex-grow: 1; /* Allow dish name to grow and fill remaining space */
-      text-align: left; /* Align dish name to the left */
-      margin-right: 10px; /* Add some space between the dish name and controls */
-    }
-
-    .quantity-controls {
-      display: flex; /* Use flexbox layout */
-      align-items: center; /* Align items vertically */
-    }
-
-    .subtract, .quantity, .add {
-      margin: 0 5px; /* Add margin around the controls */
-      cursor: pointer; /* Change cursor to pointer */
-    }
-
-    .dish-price {
-      text-align: right; /* Align dish price to the right */
-    }
-
-    .discount,
-    .total {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    }
-
-    .discount-label {
-        margin-bottom: 5px; /* Add margin below the label */
-    }
-
-    .discount-text {
-        display: block; /* Change display to block to make it appear below */
-        margin-left: 15px; /* Adjust the left margin to separate subtext from label */
-        color: #666; /* Optionally change the color of the subtext */
-        font-size: 0.9em; /* Optionally adjust the font size */
-    }
-
-    .modal-container {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-        z-index: 1000; /* Ensure the modal is on top of other elements */
-        justify-content: center;
-        align-items: center;
-    }
-
-        /* Styles for the modal content */
-        .modal-content {
-            background-color: white; /* Set the background color */
-            padding: 20px;
-            border-radius: 15px; /* Add border-radius for rounded corners */
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center; /* Center content vertically */
-            align-items: center; /* Center content horizontally */
-            color: white;
-            position: relative; /* Add position relative */
-        }
-
-        .modal-content:before {
-            content: ''; /* Add an empty content */
-            position: absolute; /* Position it absolutely */
-            top: -10px; /* Adjust top position */
-            left: -10px; /* Adjust left position */
-            right: -10px; /* Adjust right position */
-            bottom: -10px; /* Adjust bottom position */
-            background-color: white; /* Set the border color */
-            border-radius: 15px; /* Add border-radius for rounded corners */
-            z-index: -1; /* Ensure it's behind the modal content */
-        }
-
-
-    /* Styles for the buttons */
-    .payment-confirmation-btn {
-        margin: 5px;
-        padding: 10px 20px;
-        border: none;
-        cursor: pointer;
-        border-radius: 15px;
-        background-color: #944e30;
-        color: white;
-        text-decoration: underline; /* Remove underline */
-        transition: background-color 0.3s ease;
-    }
-
-    .payment-confirmation-btn:hover{
-        background-color: #663300;
-    }
-
-  </style>
 </head>
 <body>
   <!-- Required Elements per Page Start -->
@@ -352,19 +113,10 @@
 
       <div class="order-summary" id="order-summary-container">
         <h3>Order Summary</h3>
-        <hr>
-        <div class="discount dish">
-            <div class="discount-label">Discount</div>
-            <div class="discount-text">
-                (COMBO NAME/CODE)
-            </div>
-            <span class="discount-price">$000</span>
-        </div>
-
 
         <hr>
         <div class="total dish">
-        TOTAL($) <span class="total-amount">$000</span>
+        TOTAL(₱) <span class="totalAmount">$0.00</span>
         </div></br></br>
         <button class="cancel-button" id="cancel">CANCEL</button>
       </div>
@@ -372,19 +124,40 @@
   </main>
 
   <script>
+      var cartItems = <?php echo json_encode($cartItems); ?>;
       var cartItemsJson = sessionStorage.getItem('cartItems');
+      var cartItems = cartItemsJson ? JSON.parse(cartItemsJson) : [];
 
-      var cartItems = JSON.parse(cartItemsJson);
-
-      console.log(cartItems);
-
-      document.addEventListener('DOMContentLoaded', function() {
+      function updateTotalPrice() {
           var cartItemsJson = sessionStorage.getItem('cartItems');
           var cartItems = JSON.parse(cartItemsJson);
 
+          var total = 0;
+          cartItems.forEach(function(item) {
+              var itemTotal = parseFloat(item.dishPrice.replace('₱', '')) * parseInt(item.quantity);
+              total += itemTotal;
+
+              console.log("Item:", item.dishName, "Price:", item.dishPrice, "Quantity:", item.quantity, "Total:", itemTotal);
+          });
+
+          console.log("Total price:", total);
+
+          var totalAmountElement = document.querySelector('.totalAmount');
+          if (totalAmountElement) {
+              totalAmountElement.textContent = '₱' + total.toFixed(2);
+          } else {
+              console.log('Total amount element not found');
+          }
+      }
+
+
+      document.addEventListener('DOMContentLoaded', function() {
+          var cartItemsJson = sessionStorage.getItem('cartItems');
+          var cartItemsFromSession = JSON.parse(cartItemsJson);
+
           var container = document.getElementById('order-summary-container');
 
-          cartItems.forEach(function(item, index) {
+          cartItemsFromSession.forEach(function(item, index) {
               var div = document.createElement('div');
               div.className = 'dish';
 
@@ -428,50 +201,94 @@
               div.appendChild(priceSpan);
 
               container.appendChild(div);
-              if (index < cartItems.length - 1) {
+              if (index < cartItemsFromSession.length - 1) {
                   container.appendChild(document.createElement('hr'));
               }
           });
+
+          // Calculate and display total price
+          updateTotalPrice();
       });
 
 
+
+
       // Function to subtract quantity
-    function subtractQuantity(dishNumber) {
-        var quantityElement = document.getElementById('quantity-' + dishNumber);
-        var quantity = parseInt(quantityElement.innerText);
+      function subtractQuantity(dishNumber) {
+          var cartItemsJson = sessionStorage.getItem('cartItems');
+          var cartItems = JSON.parse(cartItemsJson);
 
-        // Ensure quantity doesn't go below 0
-        if (quantity > 0) {
-            quantityElement.innerText = quantity - 1;
-        }
-    }
+          // Get the quantity from the cartItems array
+          var quantity = parseInt(cartItems[dishNumber].quantity);
 
-    // Function to add quantity
-    function addQuantity(dishNumber) {
-        var quantityElement = document.getElementById('quantity-' + dishNumber);
-        var quantity = parseInt(quantityElement.innerText);
+          // Ensure quantity doesn't go below 0
+          if (quantity > 0) {
+              // Update the quantity in the cartItems array
+              cartItems[dishNumber].quantity = quantity - 1;
 
-        // Increment quantity
-        quantityElement.innerText = quantity + 1;
-    }
+              // Update the quantity displayed in the HTML
+              var quantityElement = document.getElementById(dishNumber);
+              quantityElement.innerText = cartItems[dishNumber].quantity;
 
-    // Function to handle payment
-    function handlePayment() {
-        var paymentMethods = document.getElementsByName("payment-method");
-        var isValidPayment = false;
-        for (var i = 0; i < paymentMethods.length; i++) {
-            if (paymentMethods[i].checked) {
-                isValidPayment = true;
-                break;
-            }
-        }
-        if (!isValidPayment) {
-            document.getElementById("payment-notification").innerText = "Invalid! Please select a mode of payment.";
-            return false;
-        }
-        // Proceed with payment logic if payment method is selected
-        return true;
-    }
+              // Update the cartItems in sessionStorage
+              sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+              // Update the total price and quantity
+              updateTotalPrice();
+          }
+      }
+
+      // Function to add quantity
+      function addQuantity(dishNumber) {
+          var cartItemsJson = sessionStorage.getItem('cartItems');
+          var cartItems = JSON.parse(cartItemsJson);
+
+          // Get the quantity from the cartItems array
+          var quantity = parseInt(cartItems[dishNumber].quantity);
+
+          // Increment quantity
+          cartItems[dishNumber].quantity = quantity + 1;
+
+          // Update the cartItems in sessionStorage
+          sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+          // Update the total price and quantity
+          updateTotalPrice();
+
+          window.location.reload();
+      }
+
+      // Function to handle payment
+      function handlePayment() {
+          var paymentMethods = document.getElementsByName("payment-method");
+          var isValidPayment = false;
+          for (var i = 0; i < paymentMethods.length; i++) {
+              if (paymentMethods[i].checked) {
+                  isValidPayment = true;
+                  break;
+              }
+          }
+          if (!isValidPayment) {
+              document.getElementById("payment-notification").innerText = "Invalid! Please select a mode of payment.";
+              return false;
+          }
+
+          var totalAmountElement = document.querySelector('.totalAmount');
+          var totalPrice = totalAmountElement ? totalAmountElement.textContent : "0.00";
+
+          var form = document.createElement('form');
+          form.setAttribute('method', 'post');
+          form.setAttribute('action', 'saveTransaction.php');
+          var totalPriceInput = document.createElement('input');
+          totalPriceInput.setAttribute('type', 'hidden');
+          totalPriceInput.setAttribute('name', 'totalPrice');
+          totalPriceInput.setAttribute('value', totalPrice);
+          form.appendChild(totalPriceInput);
+          document.body.appendChild(form);
+          form.submit();
+
+          return true;
+      }
 
         // Function to handle form submission
     document.getElementById("placeorder").addEventListener("click", function(event) {

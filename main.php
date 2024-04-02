@@ -1,8 +1,6 @@
 <?php
 session_start();
-
-    $cartItemsJson = isset($_POST['cartItems']) ? $_POST['cartItems'] : '[]';
-    $cartItems = json_decode($cartItemsJson, true);
+$cartItems = isset($_SESSION['cartItems']) ? $_SESSION['cartItems'] : [];
 ?>
 
 <!DOCTYPE html>
@@ -83,8 +81,8 @@ session_start();
             });
         });
 
-
-        var cartItems = <?php echo json_encode($cartItems); ?>;
+        var cartItemsJson = sessionStorage.getItem('cartItems');
+        var cartItems = cartItemsJson ? JSON.parse(cartItemsJson) : [];
 
         function updateCartItemsInSession(cartItems) {
             var xhr = new XMLHttpRequest();
@@ -109,19 +107,26 @@ session_start();
 
             var imgName = document.getElementById("modalItemImg").getAttribute("src");
 
+            var dishNumber = cartItems.length + 1;
+
             var item = {
+                dishNumber: dishNumber,
                 dishName: dishName,
                 dishPrice: dishPrice,
                 quantity: quantity,
-                imgName: imgName
+                imgName: imgName,
+                discount: null,
+                comboBoolean: false
             };
 
             cartItems.push(item); // Add the new item to cartItems
             sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update cartItems in session storage
 
-            updateCartItemsInSession(item);
+            updateCartItemsInSession(cartItems);
 
             console.log("Added to cart:", item);
+
+            alert("Dish added to Cart!");
         }
 
         //Add to Cart Function End
