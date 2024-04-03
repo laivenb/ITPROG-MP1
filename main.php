@@ -60,13 +60,15 @@ $mainDishes = getAllMainDishes();
     <h1 class="dishHeader">Main Dishes</h1>
     <!-- Dish Container Start -->
     <div class="dishContainers" id="dish">
-        <?php foreach ($mainDishes as $dish): ?>
+        <?php foreach ($mainDishes as $dish):
+        if ($dish['price'] != 9999) {    ?>
             <div class="dishItem" onclick="showAddToCartModal('<?php echo $dish['dish_name']; ?>', '₱<?php echo $dish['price']; ?>', <?php echo $dish['dish_ID']; ?>, 'main<?php echo $dish['dish_ID']; ?>.jpg')">
                 <img src="assets/images/main<?php echo $dish['dish_ID']; ?>.jpg" alt="">
                 <p class="dishName"><?php echo $dish['dish_name']; ?></p>
                 <p class="dishPrice">₱<?php echo $dish['price']; ?></p>
             </div>
-        <?php endforeach; ?>
+        <?php }
+        endforeach; ?>
     </div>
     <!-- Dish Container End-->
 </div>

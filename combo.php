@@ -21,25 +21,52 @@ $cartItems = isset($_SESSION['cartItems']) ? $_SESSION['cartItems'] : [];
 
 </head>
 <body>
+<!-- Get Dishes Script Start-->
+    <?php
+    include_once './assets/scripts/dbh.inc.php';
+
+        function getAllMainDishes()
+        {
+            try {
+                $pdo = $GLOBALS['pdo'];
+
+                if (!$pdo) {
+                    throw new PDOException('Failed to connect to the database.');
+                }
+
+                $sql = "SELECT combo_ID, combo_Name, price FROM combo";
+                $stmt = $pdo->prepare($sql);
+
+                if (!$stmt) {
+                    throw new PDOException('Failed to prepare the SQL statement.');
+                }
+
+                $stmt->execute();
+                $comboDishes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                $pdo = null;
+
+                return $comboDishes;
+            } catch (PDOException $e) {
+                return array('error' => $e->getMessage());
+            }
+        }
+
+        $comboDishes = getAllMainDishes();
+    ?>
+    <!-- Get Dishes Script End-->
 <!-- Display Container Start -->
 <div class="displayContainer">
     <h1 class="dishHeader">Combo Dishes</h1>
     <!-- Dish Container Start -->
-    <div class="dishContainers">
-        <!-- First Dish Start -->
-        <div class="dishItem" onclick="showAddToCartModal('Combo 1', '₱652.00', 1, 'combo1.jpg')">
-            <img src="assets/images/combo1.jpg" alt="">
-            <p class="dishName">Combo 1</p>
-            <p class="dishPrice">₱350.00</p>
-        </div>
-        <!-- First Dish End -->
-        <!-- Second Dish Start -->
-        <div class="dishItem" onclick="showAddToCartModal('Combo 2', '₱578.00', 1, 'combo2.jpg')">
-            <img src="assets/images/combo2.jpg" alt="">
-            <p class="dishName">Combo 2</p>
-            <p class="dishPrice">₱350.00</p>
-        </div>
-        <!-- Second Dish End -->
+    <div class="dishContainers" id="dish">
+        <?php foreach ($comboDishes as $dish): ?>
+            <div class="dishItem" onclick="showAddToCartModal('<?php echo $dish['combo_Name']; ?>', '₱<?php echo $dish['price']; ?>', <?php echo $dish['combo_ID']; ?>, 'combo<?php echo $dish['combo_ID']; ?>.jpg')">
+                <img src="assets/images/combo<?php echo $dish['combo_ID']; ?>.jpg" alt="">
+                <p class="dishName"><?php echo $dish['combo_Name']; ?></p>
+                <p class="dishPrice">₱<?php echo $dish['price']; ?></p>
+            </div>
+        <?php endforeach; ?>
     </div>
     <!-- Dish Container End-->
 </div>
