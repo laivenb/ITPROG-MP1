@@ -25,7 +25,7 @@ $cartItems = isset($_SESSION['cartItems']) ? $_SESSION['cartItems'] : [];
     <div class="container-wrapper">
       <div class="contact-container">
         <h2 class="introrustbase-font">Contact</h2>
-        <form>
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
           <div class="row">
             <!-- First Name and Last Name -->
             <div class="col-md-6">
@@ -107,7 +107,7 @@ $cartItems = isset($_SESSION['cartItems']) ? $_SESSION['cartItems'] : [];
           <!-- End of Payment Via section -->
           <br><br>
           <!-- Button for placing order -->
-          <button class="custom-button" id="placeorder">PLACE ORDER</button>
+            <button type="submit" class="custom-button" id="placeorder">PLACE ORDER</button>
         </form>
       </div>
 
@@ -206,7 +206,6 @@ $cartItems = isset($_SESSION['cartItems']) ? $_SESSION['cartItems'] : [];
               }
           });
 
-          // Calculate and display total price
           updateTotalPrice();
       });
 
@@ -218,22 +217,16 @@ $cartItems = isset($_SESSION['cartItems']) ? $_SESSION['cartItems'] : [];
           var cartItemsJson = sessionStorage.getItem('cartItems');
           var cartItems = JSON.parse(cartItemsJson);
 
-          // Get the quantity from the cartItems array
           var quantity = parseInt(cartItems[dishNumber].quantity);
 
-          // Ensure quantity doesn't go below 0
           if (quantity > 0) {
-              // Update the quantity in the cartItems array
               cartItems[dishNumber].quantity = quantity - 1;
 
-              // Update the quantity displayed in the HTML
               var quantityElement = document.getElementById(dishNumber);
               quantityElement.innerText = cartItems[dishNumber].quantity;
 
-              // Update the cartItems in sessionStorage
               sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
 
-              // Update the total price and quantity
               updateTotalPrice();
           }
       }
@@ -243,85 +236,60 @@ $cartItems = isset($_SESSION['cartItems']) ? $_SESSION['cartItems'] : [];
           var cartItemsJson = sessionStorage.getItem('cartItems');
           var cartItems = JSON.parse(cartItemsJson);
 
-          // Get the quantity from the cartItems array
           var quantity = parseInt(cartItems[dishNumber].quantity);
 
-          // Increment quantity
           cartItems[dishNumber].quantity = quantity + 1;
 
-          // Update the cartItems in sessionStorage
           sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
 
-          // Update the total price and quantity
           updateTotalPrice();
 
           window.location.reload();
       }
 
-      // Function to handle payment
-      function handlePayment() {
-          var paymentMethods = document.getElementsByName("payment-method");
-          var isValidPayment = false;
-          for (var i = 0; i < paymentMethods.length; i++) {
-              if (paymentMethods[i].checked) {
-                  isValidPayment = true;
-                  break;
-              }
+      <?php
+      if ($_SERVER["REQUEST_METHOD"] == "POST") {
+          $firstName = $_POST["first-name"];
+          $lastName = $_POST["last-name"];
+          $phone = $_POST["phone"];
+          $flightNumber = $_POST["flight-number"];
+          $seatNumber = $_POST["seat-number"];
+          $paymentMethod = $_POST["payment-method"];
+
+          $cartItemsJson = $_SESSION['cartItems'];
+          $cartItems = json_decode($cartItemsJson, true);
+
+          $xmlFile = './assets/xml/cashout.xml';
+          $xml = simplexml_load_file($xmlFile);
+
+          if ($xml === false) {
+              die('Error loading XML file');
           }
-          if (!isValidPayment) {
-              document.getElementById("payment-notification").innerText = "Invalid! Please select a mode of payment.";
-              return false;
+
+          $orders = $xml->orders;
+          $newOrder = $orders->addChild('order');
+          $newOrder->addChild('customer_first_name', $firstName);
+          $newOrder->addChild('customer_last_name', $lastName);
+          $newOrder->addChild('phone', $phone);
+          $newOrder->addChild('flight_number', $flightNumber);
+          $newOrder->addChild('seat_number', $seatNumber);
+          $newOrder->addChild('payment_method', $paymentMethod);
+
+          $dishes = $newOrder->addChild('dishes');
+          foreach ($cartItems as $item) {
+              $dish = $dishes->addChild('dish');
+              $dish->addChild('name', $item['dishName']);
+              $dish->addChild('quantity', $item['quantity']);
           }
 
-          var totalAmountElement = document.querySelector('.totalAmount');
-          var totalPrice = totalAmountElement ? totalAmountElement.textContent : "0.00";
+          $xml->asXML($xmlFile);
 
-          var form = document.createElement('form');
-          form.setAttribute('method', 'post');
-          form.setAttribute('action', 'saveTransaction.php');
-          var totalPriceInput = document.createElement('input');
-          totalPriceInput.setAttribute('type', 'hidden');
-          totalPriceInput.setAttribute('name', 'totalPrice');
-          totalPriceInput.setAttribute('value', totalPrice);
-          form.appendChild(totalPriceInput);
-          document.body.appendChild(form);
-          form.submit();
-
-          return true;
+          echo 'Order submitted successfully.';
       }
+      ?>
 
-        // Function to handle form submission
-    document.getElementById("placeorder").addEventListener("click", function(event) {
-        event.preventDefault(); // Prevent the default form submission behavior
-        if (!handlePayment()) {
-            // If payment is not valid, show notification and return
-            return;
-        }
-        showModal(); // Display the modal if payment is valid
-    });
 
-    // JavaScript functions to show and hide the modal
-    function showModal() {
-        var modal = document.getElementById("modal-container");
-        modal.style.display = "flex"; // Display the modal container
-    }
-
-    function hideModal() {
-        var modal = document.getElementById("modal-container");
-        modal.style.display = "none"; // Hide the modal container
-    }
-
-    // Sample functions for the pay and cancel buttons
-    function pay() {
-        alert("Payment successful!");
-        hideModal();
-    }
-
-    function cancel() {
-        alert("Payment cancelled.");
-        hideModal();
-    }
-</script>
+  </script>
 
 </body>
 </html>
