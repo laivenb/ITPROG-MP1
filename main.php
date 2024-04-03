@@ -142,8 +142,8 @@ $mainDishes = getAllMainDishes();
                 comboBoolean: false
             };
 
-            cartItems.push(item); // Add the new item to cartItems
-            sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update cartItems in session storage
+            cartItems.push(item);
+            sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
 
             updateCartItemsInSession(cartItems);
 
