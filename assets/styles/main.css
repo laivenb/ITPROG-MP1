@@ -1,0 +1,208 @@
+/* Import Fonts */
+@import url('fontDefining.css');
+
+/*-- Background Start --*/
+body {
+    background-color: #ddcdc0;
+    font-family: 'IntroRust-Base', sans-serif;
+}
+/*-- Background End --*/
+
+/* Display Container Start */
+.displayContainer{
+    width: 100vw;
+    height: 45vw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.dishHeader {
+    margin-top: 25px;
+    font-family: 'IntroRust-Base', sans-serif;
+    font-size: 91px;
+    color: #B8502C;
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Dish Container Start */
+.dishContainers {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.dishContainers > * {
+    border-radius: 50px;
+    border: 20px solid #E88F1E;
+}
+
+.dishItem {
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+}
+
+.dishItem img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+/* Dish Container End */
+
+/* Dish Container Start */
+.dishContainers {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.dishContainers > * {
+    border-radius: 50px;
+    border: 20px solid #E88F1E;
+    text-align: center;
+    position: relative;
+}
+
+.dishItem {
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dishItem img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.dishName {
+    font-family: 'ArchiType', sans-serif;
+    border-radius: 30px;
+    font-size: 25px;
+    color: white;
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 2px 30px;
+    margin: 0;
+    position: absolute;
+    top: 91%;
+    left: 14%;
+}
+
+.dishPrice {
+    font-family: 'ArchiType', sans-serif;
+    border-radius: 10px;
+    font-size: 25px;
+    color: white;
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.9);
+    background-color: rgba(255, 0, 0, 0.4);
+    padding: 10px 20px;
+    margin: 0;
+    position: absolute;
+    top: 5%;
+    left: 17%;
+    transform: translate(-50%, -50%);
+}
+/* Dish Container End*/
+
+.cart {
+    width: 150px;
+}
+
+/* Display Container End */
+
+/* Add to Cart Modal Start */
+
+.addCartModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    border-radius: 50px; !important;
+    background-color: #FFFBF5; !important;
+    margin: 10% auto;
+    padding: 20px;
+    width: 60%;
+    height: 60%;
+    font-family: 'ArchiType', sans-serif;
+    font-size: 27px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.close {
+    position: absolute;
+    display: none;
+}
+
+.modalImgContainer {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.modalImg {
+    border-radius: 20px;
+    border: 10px solid #E88F1E;
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}
+
+.qtyModal {
+    text-align: center;
+    width: 100px;
+    margin: 0 auto;
+    display: block;
+}
+
+.submitBtnModal {
+    margin-top: 20px;
+    border: none;
+    background-color: #944e30;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    border-radius: 5px;
+}
+
+/* Add to Cart Modal End*/
+
+/* Show Coffee Options Start */
+
+.showCoffeeOptions {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Show Coffee Options End */
