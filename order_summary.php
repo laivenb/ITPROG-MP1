@@ -107,7 +107,7 @@ $cartItems = isset($_SESSION['cartItems']) ? $_SESSION['cartItems'] : [];
           <!-- End of Payment Via section -->
           <br><br>
           <!-- Button for placing order -->
-            <button type="submit" class="custom-button" id="placeorder">PLACE ORDER</button>
+          <button type="submit" class="custom-button" id="placeorder" onclick="showAlert()">PLACE ORDER</button>
         </form>
       </div>
 
@@ -288,7 +288,11 @@ $cartItems = isset($_SESSION['cartItems']) ? $_SESSION['cartItems'] : [];
       }
       ?>
 
+function showAlert() {
+        alert("Your order has been placed successfully!");
+    }
 
+      
   </script>
 
 </body>
