@@ -17,7 +17,7 @@ $cartItems = isset($_SESSION['cartItems']) ? $_SESSION['cartItems'] : [];
 </head>
 <body>
   <!-- Required Elements per Page Start -->
-  <?php include 'header.php'; ?> <!-- Header .php -->
+  <?php include 'userheader.php'; ?> <!-- Header .php -->
   <?php include './assets/scripts/frameworkLib.php'; ?> <!-- Framework PHP Script Reference-->
   <!-- Required Elements per Page End -->
 
@@ -211,25 +211,25 @@ $cartItems = isset($_SESSION['cartItems']) ? $_SESSION['cartItems'] : [];
 
 
 
-
       // Function to subtract quantity
-      function subtractQuantity(dishNumber) {
-          var cartItemsJson = sessionStorage.getItem('cartItems');
-          var cartItems = JSON.parse(cartItemsJson);
+    function subtractQuantity(dishNumber) {
+    var cartItemsJson = sessionStorage.getItem('cartItems');
+    var cartItems = JSON.parse(cartItemsJson);
 
-          var quantity = parseInt(cartItems[dishNumber].quantity);
+    var quantity = parseInt(cartItems[dishNumber].quantity);
 
-          if (quantity > 0) {
-              cartItems[dishNumber].quantity = quantity - 1;
+    // Ensure quantity doesn't go negative
+    if (quantity > 0) {
+        cartItems[dishNumber].quantity = quantity - 1;
 
-              var quantityElement = document.getElementById(dishNumber);
-              quantityElement.innerText = cartItems[dishNumber].quantity;
+        sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
 
-              sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
+        updateTotalPrice();
 
-              updateTotalPrice();
-          }
-      }
+        window.location.reload();
+    }
+}
+
 
       // Function to add quantity
       function addQuantity(dishNumber) {

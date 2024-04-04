@@ -1,33 +1,24 @@
-<?php
-session_start();
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Header</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/styles/header.css">
-</head>
-<body>
-    <!-- Navigation Bar Start-->
+<!-- Import Header Stylesheet -->
+<link rel="stylesheet" href="assets/styles/header.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Navigation Bar Start-->
     <div class="navBar">
         <img class="logo" id="logo" src="./assets/images/SkyCuisineLogo.png"/>
+
         <ul>
-            <li><a href="#">HOME</a></li>
+            <li><a href="index.php">HOME</a></li>
             <li><a href="#">MENU</a>
                 <div class="navDropdown">
                     <ul class="navBarDrop">
-                        <li><a href="#">MAIN</a></li>
-                        <li><a href="#">SIDES</a></li>
-                        <li><a href="#">DRINKS</a></li>
-                        <li><a href="#">COMBO</a></li>
+                        <li><a href="main.php">MAIN</a></li>
+                        <li><a href="sides.php">SIDES</a></li>
+                        <li><a href="drinks.php">DRINKS</a></li>
+                        <li><a href="combo.php">COMBO</a></li>
                     </ul>
                 </div>
             </li>
-            <li><a href="#">CART</a></li>
+            <li><a href="order_summary.php">CART</a></li> 
             <?php
             if (isset($_SESSION['account_id'])) {
                 // If user is logged in, display profile dropdown
@@ -52,7 +43,7 @@ session_start();
             } else {
                 // If user is not logged in, display login button
                 ?>
-                <li><a href="login.php">LOGIN</a></li>
+                <li><a href="login.php">LOGOUT</a></li>
                 <?php
             }
             ?>
