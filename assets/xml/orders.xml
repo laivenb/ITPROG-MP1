@@ -31,14 +31,4 @@
         <flight_no>7</flight_no>
         <orderDate>2024-03-15</orderDate>
     </order>
-    <order>
-        <order_ID>11004</order_ID>
-        <customer_ID>106</customer_ID>
-        <main_ID>1</main_ID>
-        <side_ID />
-        <drink_ID>2</drink_ID>
-        <combo_ID />
-        <flight_no>217</flight_no>
-        <orderDate>2024-04-5</orderDate>
-    </order>
 </orders>
