@@ -1,6 +1,8 @@
 <?php
 session_start();
-$cartItems = isset($_SESSION['cartItems']) ? $_SESSION['cartItems'] : [];
+$cartItemsJson = isset($_SESSION['cartItems']) ? $_SESSION['cartItems'] : '[]';
+
+$cartItems = json_decode($cartItemsJson, true); // Decode JSON string to array
 ?>
 
 <!DOCTYPE html>
@@ -107,7 +109,8 @@ $cartItems = isset($_SESSION['cartItems']) ? $_SESSION['cartItems'] : [];
           <!-- End of Payment Via section -->
           <br><br>
           <!-- Button for placing order -->
-          <button type="submit" class="custom-button" id="placeorder" onclick="showAlert()">PLACE ORDER</button>
+
+          <a href="cashout.php" button type="submit" class="custom-button" id="placeorder">PLACE ORDER</a>
         </form>
       </div>
 
@@ -222,6 +225,11 @@ $cartItems = isset($_SESSION['cartItems']) ? $_SESSION['cartItems'] : [];
     if (quantity > 0) {
         cartItems[dishNumber].quantity = quantity - 1;
 
+        // If quantity becomes zero, remove the item from cart
+        if (cartItems[dishNumber].quantity === 0) {
+            cartItems.splice(dishNumber, 1);
+        }
+
         sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
 
         updateTotalPrice();
@@ -289,9 +297,9 @@ $cartItems = isset($_SESSION['cartItems']) ? $_SESSION['cartItems'] : [];
       ?>
 
 function showAlert() {
-        alert("Your order has been placed successfully!");
+        window.location.href = "cashout.php";
     }
-
+    
       
   </script>
 

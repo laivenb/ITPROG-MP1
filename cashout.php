@@ -1,3 +1,23 @@
+<?php
+session_start();
+$cartItemsJson = isset($_SESSION['cartItems']) ? $_SESSION['cartItems'] : '[]';
+$cartItems = json_decode($cartItemsJson, true); // Decode JSON string to array
+
+$flightNumber = isset($_POST['flight-number']) ? $_POST['flight-number'] : '';
+$seatNumber = isset($_POST['seat-number']) ? $_POST['seat-number'] : '';
+$firstName = isset($_POST['first-name']) ? $_POST['first-name'] : '';
+$lastName = isset($_POST['last-name']) ? $_POST['last-name'] : '';
+
+$customerName = $lastName . ' ' . $firstName;
+
+// Remove items with zero quantity
+$cartItems = array_filter($cartItems, function($item) {
+    return $item['quantity'] > 0;
+});
+
+$_SESSION['cartItems'] = json_encode($cartItems);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,8 +76,6 @@
     margin-bottom: 20px;
   }
 
-
-
   .receipt-container .order-total {
     margin-top: 20px;
   }
@@ -102,61 +120,66 @@
     background-color: #663300; /* Change background color on hover */
   }
 
-.receipt-container .order-details p {
+  .receipt-container .order-details p {
     margin: 5px 0;
     display: flex;
     justify-content: space-between;
-}
+  }
 
-.receipt-container .order-details p .dish-name {
+  .receipt-container .order-details p .dish-name {
     flex: 1;
     text-align: left;
-}
+  }
 
-.receipt-container .order-details p .dish-price {
+  .receipt-container .order-details p .dish-price {
     text-align: right;
-}
+  }
 
-.receipt-container .order-details p .label {
+  .receipt-container .order-details p .label {
     flex: 1;
     text-align: left;
-}
-
-
-</style>
-
+  }
+  </style>
 </head>
 <body>
   <!-- Required Elements per Page Start -->
-  <?php include 'header.php'; ?> <!-- Header .php -->
+  <?php include 'userheader.php'; ?> <!-- Header .php -->
   <?php include './assets/scripts/frameworkLib.php'; ?> <!-- Framework PHP Script Reference-->
   <!-- Required Elements per Page End -->
 
   <main>
-  <div class="receipt-container">
-    <h2>WE'VE GOT YOUR ORDER</h2>
-    <p>Ready to dig in? Your order is now being prepared!</p>
-    <div class="order-details">
-        <p>Order <span id="order-number">###</span> for <span id="customer-name">[fname]</span>, seat <span id="seat-number">[seatno]</span>.</p>
-        <p><span class="dish-name" id="dish1-name">Dish Name</span><span class="dish-price" id="dish1-price">$000</span></p>
-        <p><span class="dish-name" id="dish2-name">Dish Name</span><span class="dish-price" id="dish2-price">$000</span></p>
-        <p><span class="dish-name" id="dish3-name">Dish Name</span><span class="dish-price" id="dish3-price">$000</span></p>
-        <hr>
-        <p><span class="label">Subtotal</span><span id="subtotal">$000</span></p>
-        <p><span class="label">Discount</span><span id="discount">$000</span></p>
-        <hr>
-        <p><span class="label">Total</span><span id="total">$000</span></p>
+    <div class="receipt-container">
+      <h2>WE'VE GOT YOUR ORDER</h2>
+      <p>Ready to dig in? Your order is now being prepared!</p>
+      <div class="order-details">
+        <p>Order <span id="order-number">###</span> for <span id="customer-name"><?php echo $customerName; ?></span>, seat <span id="seat-number"><?php echo $seatNumber; ?></span>, flight number <span id="flight-number"><?php echo $flightNumber; ?></span>.</p>
+        <?php
+        // Check if there are items in the cart
+        if (!empty($cartItems)) {
+            $subtotal = 0; 
+            foreach ($cartItems as $index => $item) {
+                $itemName = $item['dishName'];
+                $itemPrice = $item['dishPrice'];
+                $quantity = $item['quantity'];
+                $totalPrice = $quantity * str_replace('₱', '', $itemPrice);
+                $subtotal += $totalPrice;
+
+                echo '<p><span class="dish-name">' . $itemName . '</span><span class="dish-quantity">' . $quantity . '</span><span class="dish-price">' . $itemPrice . '</span></p>';
+            }
+            echo '<hr>';
+            echo '<p><span class="label">Subtotal</span><span>₱' . number_format($subtotal, 2) . '</span></p>';
+            echo '<p><span class="label">Discount</span><span>₱0.00</span></p>';
+            echo '<hr>';
+            echo '<p><span class="label">Total</span><span>₱' . number_format($subtotal, 2) . '</span></p>';
+        } else {
+            // If cart is empty, display Your cart is empty
+            echo '<p>Your cart is empty.</p>';
+        }
+        ?>
+      </div>
     </div>
-</div>
-
-
-</div>
-
 
     <button class="custom-button" onclick="OK()">OK</button>
-
-
-
   </main>
 
   <!-- You can add your JavaScript function for checkout handling here -->
