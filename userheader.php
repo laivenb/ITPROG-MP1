@@ -7,7 +7,7 @@
         <img class="logo" id="logo" src="./assets/images/SkyCuisineLogo.png"/>
 
         <ul>
-            <li><a href="index.php">HOME</a></li>
+            <li><a href="userdashboard.php">HOME</a></li>
             <li><a href="#">MENU</a>
                 <div class="navDropdown">
                     <ul class="navBarDrop">

@@ -40,6 +40,7 @@ $cartItems = json_decode($cartItemsJson, true); // Decode JSON string to array
               <div class="form-group">
                 <label for="last-name">Last Name:</label>
                 <input type="text" id="last-name" name="last-name" class="form-control" required>
+                
               </div>
             </div>
           </div>

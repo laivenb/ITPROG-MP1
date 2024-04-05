@@ -10,10 +10,23 @@ $lastName = isset($_POST['last-name']) ? $_POST['last-name'] : '';
 
 $customerName = $lastName . ' ' . $firstName;
 
+$_SESSION['orderNumber'] = 11003;
+
+// Get the current order number from the session or set it to 11003 if it doesn't exist
+$orderNumber = isset($_SESSION['orderNumber']) ? $_SESSION['orderNumber'] : 11003;
+
+$orderNumber++;
+
+$_SESSION['orderNumber'] = $orderNumber;
+
+// Convert the order number to a format with leading zeros for consistent display
+$formattedOrderNumber = sprintf("%05d", $orderNumber);
+
 // Remove items with zero quantity
 $cartItems = array_filter($cartItems, function($item) {
     return $item['quantity'] > 0;
 });
+
 
 $_SESSION['cartItems'] = json_encode($cartItems);
 ?>
@@ -152,7 +165,7 @@ $_SESSION['cartItems'] = json_encode($cartItems);
       <h2>WE'VE GOT YOUR ORDER</h2>
       <p>Ready to dig in? Your order is now being prepared!</p>
       <div class="order-details">
-        <p>Order <span id="order-number">###</span> for <span id="customer-name"><?php echo $customerName; ?></span>, seat <span id="seat-number"><?php echo $seatNumber; ?></span>, flight number <span id="flight-number"><?php echo $flightNumber; ?></span>.</p>
+      <p>Order <span id="order-number">#<?php echo $formattedOrderNumber; ?></span> JM Mariano, 1C , 217.</p>
         <?php
         // Check if there are items in the cart
         if (!empty($cartItems)) {
@@ -164,7 +177,7 @@ $_SESSION['cartItems'] = json_encode($cartItems);
                 $totalPrice = $quantity * str_replace('₱', '', $itemPrice);
                 $subtotal += $totalPrice;
 
-                echo '<p><span class="dish-name">' . $itemName . '</span><span class="dish-quantity">' . $quantity . '</span><span class="dish-price">' . $itemPrice . '</span></p>';
+                echo '<p><span class="dish-name">' . $itemName . '</span><span class="dish-price">' . $itemPrice . '</span></p>';
             }
             echo '<hr>';
             echo '<p><span class="label">Subtotal</span><span>₱' . number_format($subtotal, 2) . '</span></p>';
@@ -188,6 +201,8 @@ $_SESSION['cartItems'] = json_encode($cartItems);
       // Add your checkout logic here
       alert("Redirecting to checkout page...");
       // You can redirect the user to the checkout page or perform any other action you need
+      window.location.href = "userdashboard.php";
+
     }
   </script>
 </body>
